@@ -1,22 +1,28 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { toDateStringJST, currentYearMonthJST } from "@/lib/dateUtils";
 
 /**
- * カレンダー用: 月ごとの日別・省庁別件数を返す
  * GET /api/calendar?year=2026&month=2&ministry=経済産業省,外務省
+ * Returns daily counts by ministry for a given month (JST).
  */
 export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
-  const year = parseInt(searchParams.get("year") || new Date().getFullYear().toString(), 10);
-  const month = parseInt(searchParams.get("month") || (new Date().getMonth() + 1).toString(), 10);
+  const { year: defaultYear, month: defaultMonth } = currentYearMonthJST();
+  const year = parseInt(searchParams.get("year") || defaultYear.toString(), 10);
+  const month = parseInt(searchParams.get("month") || defaultMonth.toString(), 10);
   const ministryFilter = searchParams.get("ministry");
 
-  const startDate = new Date(Date.UTC(year, month - 1, 1));
-  const endDate = new Date(Date.UTC(year, month, 0, 23, 59, 59, 999));
+  // Month range in JST -> UTC
+  const startJST = new Date(`${year}-${String(month).padStart(2, "0")}-01T00:00:00+09:00`);
+  const lastDay = new Date(year, month, 0).getDate();
+  const endJST = new Date(
+    `${year}-${String(month).padStart(2, "0")}-${String(lastDay).padStart(2, "0")}T23:59:59.999+09:00`
+  );
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const where: any = {
-    publishedAt: { gte: startDate, lte: endDate },
+    publishedAt: { gte: startJST, lte: endJST },
   };
 
   if (ministryFilter) {
@@ -37,23 +43,18 @@ export async function GET(request: NextRequest) {
       },
     });
 
-    // Aggregate by date and ministry
+    // Aggregate by JST date
     const dateMap: Record<string, Record<string, number>> = {};
 
     for (const item of items) {
-      const dateKey = item.publishedAt.toISOString().split("T")[0];
+      const dateKey = toDateStringJST(item.publishedAt);
       if (!dateMap[dateKey]) dateMap[dateKey] = {};
       dateMap[dateKey][item.ministry] = (dateMap[dateKey][item.ministry] || 0) + 1;
     }
 
-    // Transform to array
     const days = Object.entries(dateMap).map(([date, ministries]) => {
       const total = Object.values(ministries).reduce((a, b) => a + b, 0);
-      return {
-        date,
-        total,
-        ministries,
-      };
+      return { date, total, ministries };
     });
 
     days.sort((a, b) => a.date.localeCompare(b.date));

@@ -3,15 +3,11 @@
  *
  * LLM実装は差し替え可能。MVPではダミー実装を提供し、
  * OPENAI_API_KEY が設定されていればOpenAI APIを利用する。
- *
- * 将来拡張:
- * - Claude API対応
- * - 重要度スコア自動付与
- * - カテゴリ自動分類
  */
 
 import { createHash } from "crypto";
 import { prisma } from "./prisma";
+import { dayRangeJST } from "./dateUtils";
 
 export interface SummaryInput {
   title: string;
@@ -20,10 +16,9 @@ export interface SummaryInput {
 }
 
 export interface SummaryResult {
-  points: string[]; // 箇条書き配列
+  points: string[];
 }
 
-// --- Summary Provider Interface ---
 export interface SummaryProvider {
   generateSummary(
     items: SummaryInput[],
@@ -31,33 +26,27 @@ export interface SummaryProvider {
   ): Promise<SummaryResult>;
 }
 
-// --- Dummy Provider (MVP default) ---
 class DummySummaryProvider implements SummaryProvider {
   async generateSummary(
     items: SummaryInput[],
     context: { ministry?: string; date: string }
   ): Promise<SummaryResult> {
-    const prefix = context.ministry
-      ? `${context.ministry}の`
-      : "全省庁の";
-    const count = items.length;
+    const prefix = context.ministry ? `${context.ministry}の` : "全省庁の";
 
-    if (count === 0) {
+    if (items.length === 0) {
       return { points: [`${prefix}新着情報はありません。`] };
     }
 
-    // Summarize by picking top titles
     const titles = items.slice(0, 5).map((it) => it.title);
     const points = [
-      `${prefix}新着情報 ${count}件（${context.date}）`,
-      ...titles.map((t) => t),
+      `${prefix}新着情報 ${items.length}件（${context.date}）`,
+      ...titles,
     ];
 
     return { points: points.slice(0, 5) };
   }
 }
 
-// --- OpenAI Provider ---
 class OpenAISummaryProvider implements SummaryProvider {
   private apiKey: string;
 
@@ -124,7 +113,6 @@ JSON形式で回答してください: {"points": ["要約1", "要約2", ...]}`;
 
       if (!response.ok) {
         console.error(`OpenAI API error: ${response.status}`);
-        // Fallback to dummy
         return new DummySummaryProvider().generateSummary(items, context);
       }
 
@@ -138,12 +126,10 @@ JSON形式で回答してください: {"points": ["要約1", "要約2", ...]}`;
       console.error("OpenAI summary error:", e);
     }
 
-    // Fallback to dummy
     return new DummySummaryProvider().generateSummary(items, context);
   }
 }
 
-// --- Provider Factory ---
 function getSummaryProvider(): SummaryProvider {
   const openaiKey = process.env.OPENAI_API_KEY;
   if (openaiKey) {
@@ -152,29 +138,23 @@ function getSummaryProvider(): SummaryProvider {
   return new DummySummaryProvider();
 }
 
-// --- Helper: compute items hash for cache invalidation ---
 function computeItemsHash(items: SummaryInput[]): string {
   const content = items.map((i) => `${i.title}|${i.summaryRaw || ""}`).join("||");
   return createHash("md5").update(content).digest("hex");
 }
 
-// --- Public API ---
-
 /**
- * 日次要約を取得（キャッシュ優先）
- * データが更新されていれば再生成する
+ * 日次要約を取得（キャッシュ優先、JST日付ベース）
  */
 export async function getDailySummary(
   date: string,
   ministry?: string | null
 ): Promise<SummaryResult> {
-  // Get items for this date + ministry
-  const startOfDay = new Date(`${date}T00:00:00.000Z`);
-  const endOfDay = new Date(`${date}T23:59:59.999Z`);
+  const { start, end } = dayRangeJST(date);
 
   const items = await prisma.item.findMany({
     where: {
-      publishedAt: { gte: startOfDay, lte: endOfDay },
+      publishedAt: { gte: start, lte: end },
       ...(ministry ? { ministry } : {}),
     },
     select: {
@@ -187,7 +167,6 @@ export async function getDailySummary(
 
   const itemsHash = computeItemsHash(items);
 
-  // Check cache
   const cached = await prisma.dailySummary.findUnique({
     where: {
       date_ministry: {
@@ -205,14 +184,12 @@ export async function getDailySummary(
     }
   }
 
-  // Generate new summary
   const provider = getSummaryProvider();
   const result = await provider.generateSummary(items, {
     ministry: ministry || undefined,
     date,
   });
 
-  // Cache it
   await prisma.dailySummary.upsert({
     where: {
       date_ministry: {

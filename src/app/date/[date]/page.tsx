@@ -2,15 +2,20 @@ import { prisma } from "@/lib/prisma";
 import { getDailySummary } from "@/lib/summary";
 import Link from "next/link";
 import ministriesData from "@/config/ministries.json";
+import {
+  dayRangeJST,
+  formatDateDisplay,
+  formatTimeJST,
+  getShortName,
+} from "@/lib/dateUtils";
 
 interface MinistryConfig {
   ministry: string;
   color: string;
 }
 
-const MINISTRIES: MinistryConfig[] = ministriesData as MinistryConfig[];
 const MINISTRY_COLOR_MAP: Record<string, string> = Object.fromEntries(
-  MINISTRIES.map((m) => [m.ministry, m.color])
+  (ministriesData as MinistryConfig[]).map((m) => [m.ministry, m.color])
 );
 
 interface PageProps {
@@ -28,12 +33,11 @@ export default async function DateDetailPage({ params }: PageProps) {
     );
   }
 
-  const startOfDay = new Date(`${date}T00:00:00.000Z`);
-  const endOfDay = new Date(`${date}T23:59:59.999Z`);
+  const { start, end } = dayRangeJST(date);
 
   const items = await prisma.item.findMany({
     where: {
-      publishedAt: { gte: startOfDay, lte: endOfDay },
+      publishedAt: { gte: start, lte: end },
     },
     orderBy: { publishedAt: "desc" },
   });
@@ -53,15 +57,17 @@ export default async function DateDetailPage({ params }: PageProps) {
   }
 
   // Date navigation
-  const d = new Date(date);
+  const d = new Date(`${date}T12:00:00+09:00`);
   const prevDate = new Date(d);
   prevDate.setDate(prevDate.getDate() - 1);
   const nextDate = new Date(d);
   nextDate.setDate(nextDate.getDate() + 1);
-  const fmt = (dt: Date) => dt.toISOString().split("T")[0];
-
-  const weekdays = ["日", "月", "火", "水", "木", "金", "土"];
-  const displayDate = `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日（${weekdays[d.getDay()]}）`;
+  const fmt = (dt: Date) => {
+    const y = dt.getFullYear();
+    const m = String(dt.getMonth() + 1).padStart(2, "0");
+    const day = String(dt.getDate()).padStart(2, "0");
+    return `${y}-${m}-${day}`;
+  };
 
   return (
     <div>
@@ -74,7 +80,7 @@ export default async function DateDetailPage({ params }: PageProps) {
           >
             &larr;
           </Link>
-          <h1 className="text-xl font-bold">{displayDate}</h1>
+          <h1 className="text-xl font-bold">{formatDateDisplay(date)}</h1>
           <Link
             href={`/date/${fmt(nextDate)}`}
             className="p-2 hover:bg-gray-100 rounded-md transition-colors text-gray-500"
@@ -95,19 +101,23 @@ export default async function DateDetailPage({ params }: PageProps) {
       ) : (
         <>
           {/* Overall summary */}
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-            <h2 className="text-sm font-semibold text-blue-800 mb-2">
-              この日の全体要約
-            </h2>
-            <ul className="space-y-1">
-              {overallSummary.points.map((point, i) => (
-                <li key={i} className="text-sm text-blue-900 flex gap-2">
-                  <span className="text-blue-400 flex-shrink-0">-</span>
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {overallSummary.points.length > 0 && (
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+              <h2 className="text-sm font-semibold text-blue-800 mb-2">
+                この日の全体要約
+              </h2>
+              <ul className="space-y-1">
+                {overallSummary.points.slice(0, 3).map((point, i) => (
+                  <li key={i} className="text-sm text-blue-900 flex gap-2">
+                    <span className="text-blue-400 flex-shrink-0">
+                      &#x25B8;
+                    </span>
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* By ministry */}
           <div className="space-y-4">
@@ -126,7 +136,15 @@ export default async function DateDetailPage({ params }: PageProps) {
                       className="px-4 py-3 flex items-center justify-between"
                       style={{ borderLeft: `4px solid ${color}` }}
                     >
-                      <h2 className="font-semibold text-base">{ministry}</h2>
+                      <div className="flex items-center gap-2">
+                        <span
+                          className="text-xs text-white px-1.5 py-0.5 rounded font-medium"
+                          style={{ backgroundColor: color }}
+                        >
+                          {getShortName(ministry)}
+                        </span>
+                        <h2 className="font-semibold text-base">{ministry}</h2>
+                      </div>
                       <span className="text-sm text-gray-500">
                         {ministryItems.length}件
                       </span>
@@ -135,12 +153,14 @@ export default async function DateDetailPage({ params }: PageProps) {
                     {summary && summary.points.length > 0 && (
                       <div className="px-4 py-2 bg-gray-50 border-b border-gray-100">
                         <ul className="space-y-0.5">
-                          {summary.points.map((point, i) => (
+                          {summary.points.slice(0, 3).map((point, i) => (
                             <li
                               key={i}
                               className="text-xs text-gray-600 flex gap-1.5"
                             >
-                              <span className="text-gray-400 flex-shrink-0">-</span>
+                              <span className="text-gray-400 flex-shrink-0">
+                                -
+                              </span>
                               <span>{point}</span>
                             </li>
                           ))}
@@ -150,8 +170,9 @@ export default async function DateDetailPage({ params }: PageProps) {
 
                     <div className="divide-y divide-gray-100">
                       {ministryItems.map((item) => {
-                        const time = new Date(item.publishedAt);
-                        const timeStr = `${String(time.getUTCHours()).padStart(2, "0")}:${String(time.getUTCMinutes()).padStart(2, "0")}`;
+                        const timeStr = formatTimeJST(
+                          new Date(item.publishedAt)
+                        );
 
                         return (
                           <div key={item.id} className="px-4 py-3">

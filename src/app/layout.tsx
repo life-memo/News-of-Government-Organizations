@@ -15,11 +15,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className="antialiased bg-gray-50 text-gray-900 font-sans">
-        <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+      <body className="antialiased font-sans">
+        <header className="bg-white border-b border-gray-200 sticky top-0 z-30">
           <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2 font-bold text-lg">
-              <span className="text-blue-600">&#x1F3DB;</span>
+            <Link
+              href="/"
+              className="flex items-center gap-2 font-bold text-lg"
+            >
+              <span className="text-blue-600 text-xl">&#x1F3DB;</span>
               <span>省庁新着ダッシュボード</span>
             </Link>
             <nav className="flex items-center gap-4 text-sm">
@@ -27,7 +30,7 @@ export default function RootLayout({
                 href="/"
                 className="text-gray-600 hover:text-gray-900 transition-colors"
               >
-                カレンダー
+                トップ
               </Link>
               <Link
                 href="/search"

@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import ministriesData from "@/config/ministries.json";
+import { getShortName, formatTimeJST } from "@/lib/dateUtils";
 
 interface MinistryConfig {
   ministry: string;
@@ -31,22 +32,6 @@ interface SearchResult {
   page: number;
   limit: number;
   totalPages: number;
-}
-
-function getShortName(ministry: string): string {
-  const map: Record<string, string> = {
-    内閣府: "内閣",
-    法務省: "法務",
-    経済産業省: "経産",
-    国土交通省: "国交",
-    防衛省: "防衛",
-    外務省: "外務",
-    総務省: "総務",
-    厚生労働省: "厚労",
-    文部科学省: "文科",
-    農林水産省: "農水",
-  };
-  return map[ministry] || ministry.slice(0, 2);
 }
 
 function SearchContent() {
@@ -191,7 +176,7 @@ function SearchContent() {
               {result.items.map((item) => {
                 const dt = new Date(item.publishedAt);
                 const dateStr = `${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, "0")}-${String(dt.getDate()).padStart(2, "0")}`;
-                const timeStr = `${String(dt.getUTCHours()).padStart(2, "0")}:${String(dt.getUTCMinutes()).padStart(2, "0")}`;
+                const timeStr = formatTimeJST(dt);
                 const color = MINISTRY_COLOR_MAP[item.ministry] || "#6b7280";
 
                 return (
@@ -275,7 +260,9 @@ function SearchContent() {
 export default function SearchPage() {
   return (
     <Suspense
-      fallback={<div className="text-center py-12 text-gray-400">読み込み中...</div>}
+      fallback={
+        <div className="text-center py-12 text-gray-400">読み込み中...</div>
+      }
     >
       <SearchContent />
     </Suspense>

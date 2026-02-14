@@ -1,29 +1,35 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { dayRangeJST } from "@/lib/dateUtils";
 
 export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
-  const date = searchParams.get("date"); // "2026-02-13"
-  const ministry = searchParams.get("ministry"); // comma-separated
-  const q = searchParams.get("q"); // keyword search
-  const from = searchParams.get("from"); // "2026-02-01"
-  const to = searchParams.get("to"); // "2026-02-28"
-  const sort = searchParams.get("sort") || "desc"; // "asc" | "desc"
+  const date = searchParams.get("date");
+  const ministry = searchParams.get("ministry");
+  const q = searchParams.get("q");
+  const from = searchParams.get("from");
+  const to = searchParams.get("to");
+  const sort = searchParams.get("sort") || "desc";
   const page = parseInt(searchParams.get("page") || "1", 10);
   const limit = Math.min(parseInt(searchParams.get("limit") || "100", 10), 500);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const where: any = {};
 
-  // Date filter
+  // Date filter (JST)
   if (date) {
-    const startOfDay = new Date(`${date}T00:00:00.000Z`);
-    const endOfDay = new Date(`${date}T23:59:59.999Z`);
-    where.publishedAt = { gte: startOfDay, lte: endOfDay };
+    const { start, end } = dayRangeJST(date);
+    where.publishedAt = { gte: start, lte: end };
   } else if (from || to) {
     where.publishedAt = {};
-    if (from) where.publishedAt.gte = new Date(`${from}T00:00:00.000Z`);
-    if (to) where.publishedAt.lte = new Date(`${to}T23:59:59.999Z`);
+    if (from) {
+      const { start } = dayRangeJST(from);
+      where.publishedAt.gte = start;
+    }
+    if (to) {
+      const { end } = dayRangeJST(to);
+      where.publishedAt.lte = end;
+    }
   }
 
   // Ministry filter
@@ -36,7 +42,7 @@ export async function GET(request: NextRequest) {
     }
   }
 
-  // Keyword search (title + summaryRaw)
+  // Keyword search
   if (q) {
     where.OR = [
       { title: { contains: q } },
