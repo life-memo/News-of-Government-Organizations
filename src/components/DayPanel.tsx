@@ -2,21 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import {
-  formatDateDisplay,
-  formatTimeJST,
-  getShortName,
-} from "@/lib/dateUtils";
-import ministriesData from "@/config/ministries.json";
-
-interface MinistryConfig {
-  ministry: string;
-  color: string;
-}
-
-const MINISTRY_COLOR_MAP: Record<string, string> = Object.fromEntries(
-  (ministriesData as MinistryConfig[]).map((m) => [m.ministry, m.color])
-);
+import { formatDateDisplay, formatTimeJST } from "@/lib/dateUtils";
+import { labelToKey, getMinistryByLabel, type MinistryDef } from "@/config/ministries";
 
 interface Item {
   id: string;
@@ -71,19 +58,20 @@ export default function DayPanel({ date, onClose }: DayPanelProps) {
 
   const isOpen = !!date;
 
-  // Group by ministry
-  const byMinistry: Record<string, Item[]> = {};
+  // Group by ministryKey
+  const byKey: Record<string, { def: MinistryDef; items: Item[] }> = {};
   for (const item of items) {
-    if (!byMinistry[item.ministry]) byMinistry[item.ministry] = [];
-    byMinistry[item.ministry].push(item);
+    const mk = labelToKey(item.ministry);
+    if (!byKey[mk]) byKey[mk] = { def: getMinistryByLabel(item.ministry), items: [] };
+    byKey[mk].items.push(item);
   }
 
-  const ministryEntries = Object.entries(byMinistry).sort(
-    ([, a], [, b]) => b.length - a.length
+  const sections = Object.values(byKey).sort(
+    (a, b) => b.items.length - a.items.length
   );
 
-  const getVisible = (ministry: string) =>
-    showCount[ministry] || ITEMS_PER_PAGE;
+  const getVisible = (key: string) =>
+    showCount[key] || ITEMS_PER_PAGE;
 
   return (
     <>
@@ -100,7 +88,7 @@ export default function DayPanel({ date, onClose }: DayPanelProps) {
           <div>
             <h3 className="font-bold text-sm">{formatDateDisplay(date)}</h3>
             <p className="text-xs text-gray-400">
-              {items.length}件 / {ministryEntries.length}省庁
+              {items.length}件 / {sections.length}省庁
             </p>
           </div>
           <div className="flex items-center gap-2">
@@ -150,29 +138,29 @@ export default function DayPanel({ date, onClose }: DayPanelProps) {
             )}
 
             {/* Ministry sections */}
-            {ministryEntries.map(([ministry, ministryItems]) => {
-              const color = MINISTRY_COLOR_MAP[ministry] || "#6b7280";
-              const visible = getVisible(ministry);
-              const displayItems = ministryItems.slice(0, visible);
-              const hasMore = ministryItems.length > visible;
+            {sections.map((section) => {
+              const { def, items: sItems } = section;
+              const visible = getVisible(def.key);
+              const displayItems = sItems.slice(0, visible);
+              const hasMore = sItems.length > visible;
 
               return (
-                <div key={ministry}>
+                <div key={def.key}>
                   <div
                     className="px-4 py-2 flex items-center gap-2 bg-gray-50"
-                    style={{ borderLeft: `3px solid ${color}` }}
+                    style={{ borderLeft: `3px solid ${def.color}` }}
                   >
                     <span
                       className="text-[10px] text-white px-1.5 py-0.5 rounded font-medium"
-                      style={{ backgroundColor: color }}
+                      style={{ backgroundColor: def.color }}
                     >
-                      {getShortName(ministry)}
+                      {def.shortLabel}
                     </span>
                     <span className="text-xs font-medium text-gray-700">
-                      {ministry}
+                      {def.label}
                     </span>
                     <span className="text-[10px] text-gray-400 ml-auto">
-                      {ministryItems.length}件
+                      {sItems.length}件
                     </span>
                   </div>
 
@@ -207,12 +195,12 @@ export default function DayPanel({ date, onClose }: DayPanelProps) {
                       onClick={() =>
                         setShowCount((prev) => ({
                           ...prev,
-                          [ministry]: (prev[ministry] || ITEMS_PER_PAGE) + ITEMS_PER_PAGE,
+                          [def.key]: (prev[def.key] || ITEMS_PER_PAGE) + ITEMS_PER_PAGE,
                         }))
                       }
                       className="w-full py-1.5 text-[10px] text-blue-600 hover:bg-blue-50 transition-colors"
                     >
-                      +{Math.min(ITEMS_PER_PAGE, ministryItems.length - visible)}
+                      +{Math.min(ITEMS_PER_PAGE, sItems.length - visible)}
                       件を表示
                     </button>
                   )}

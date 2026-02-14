@@ -2,18 +2,8 @@
 
 import { useState, useEffect, useCallback, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import ministriesData from "@/config/ministries.json";
-import { getShortName, formatTimeJST } from "@/lib/dateUtils";
-
-interface MinistryConfig {
-  ministry: string;
-  color: string;
-}
-
-const MINISTRIES: MinistryConfig[] = ministriesData as MinistryConfig[];
-const MINISTRY_COLOR_MAP: Record<string, string> = Object.fromEntries(
-  MINISTRIES.map((m) => [m.ministry, m.color])
-);
+import { MINISTRIES, getMinistryByLabel } from "@/config/ministries";
+import { formatTimeJST } from "@/lib/dateUtils";
 
 interface Item {
   id: string;
@@ -120,17 +110,17 @@ function SearchContent() {
           {MINISTRIES.map((m) => {
             const active =
               selectedMinistries.length === 0 ||
-              selectedMinistries.includes(m.ministry);
+              selectedMinistries.includes(m.label);
             return (
               <button
-                key={m.ministry}
-                onClick={() => toggleMinistry(m.ministry)}
+                key={m.key}
+                onClick={() => toggleMinistry(m.label)}
                 className={`px-2 py-0.5 rounded-full text-xs font-medium transition-all ${
                   active ? "text-white" : "bg-gray-100 text-gray-400"
                 }`}
                 style={active ? { backgroundColor: m.color } : {}}
               >
-                {getShortName(m.ministry)}
+                {m.shortLabel}
               </button>
             );
           })}
@@ -177,7 +167,7 @@ function SearchContent() {
                 const dt = new Date(item.publishedAt);
                 const dateStr = `${dt.getFullYear()}-${String(dt.getMonth() + 1).padStart(2, "0")}-${String(dt.getDate()).padStart(2, "0")}`;
                 const timeStr = formatTimeJST(dt);
-                const color = MINISTRY_COLOR_MAP[item.ministry] || "#6b7280";
+                const mDef = getMinistryByLabel(item.ministry);
 
                 return (
                   <div key={item.id} className="px-4 py-3">
@@ -185,9 +175,9 @@ function SearchContent() {
                       <div className="flex-shrink-0 mt-0.5">
                         <span
                           className="text-[10px] text-white px-1.5 py-0.5 rounded font-medium"
-                          style={{ backgroundColor: color }}
+                          style={{ backgroundColor: mDef.color }}
                         >
-                          {getShortName(item.ministry)}
+                          {mDef.shortLabel}
                         </span>
                       </div>
                       <div className="flex-1 min-w-0">

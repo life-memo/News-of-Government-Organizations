@@ -1,19 +1,10 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import ministriesData from "@/config/ministries.json";
-import { getShortName, currentYearMonthJST, todayStringJST } from "@/lib/dateUtils";
+import { getMinistryByLabel } from "@/config/ministries";
+import { currentYearMonthJST, todayStringJST } from "@/lib/dateUtils";
 import { useFilter } from "./FilterContext";
 import DayPanel from "./DayPanel";
-
-interface MinistryConfig {
-  ministry: string;
-  color: string;
-}
-
-const MINISTRY_COLOR_MAP: Record<string, string> = Object.fromEntries(
-  (ministriesData as MinistryConfig[]).map((m) => [m.ministry, m.color])
-);
 
 interface CalendarDay {
   date: string;
@@ -207,20 +198,22 @@ export default function Calendar() {
                       {dayData && (
                         <div className="mt-1 flex flex-wrap gap-0.5">
                           {Object.entries(dayData.ministries).map(
-                            ([ministry, count]) => (
-                              <span
-                                key={ministry}
-                                className="text-white text-[10px] px-1 py-0.5 rounded leading-tight"
-                                style={{
-                                  backgroundColor:
-                                    MINISTRY_COLOR_MAP[ministry] || "#6b7280",
-                                }}
-                                title={`${ministry}: ${count}件`}
-                              >
-                                {getShortName(ministry)}
-                                {(count as number) > 1 && count}
-                              </span>
-                            )
+                            ([ministry, count]) => {
+                              const def = getMinistryByLabel(ministry);
+                              return (
+                                <span
+                                  key={def.key}
+                                  className="text-white text-[10px] px-1 py-0.5 rounded leading-tight"
+                                  style={{
+                                    backgroundColor: def.color,
+                                  }}
+                                  title={`${def.label}: ${count}件`}
+                                >
+                                  {def.shortLabel}
+                                  {(count as number) > 1 && count}
+                                </span>
+                              );
+                            }
                           )}
                         </div>
                       )}

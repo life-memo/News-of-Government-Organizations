@@ -1,15 +1,7 @@
 "use client";
 
-import ministriesData from "@/config/ministries.json";
-import { getShortName } from "@/lib/dateUtils";
+import { MINISTRIES } from "@/config/ministries";
 import { useFilter } from "./FilterContext";
-
-interface MinistryConfig {
-  ministry: string;
-  color: string;
-}
-
-const MINISTRIES: MinistryConfig[] = ministriesData as MinistryConfig[];
 
 export default function MinistryFilter() {
   const { selectedMinistries, toggleMinistry, clearMinistries } = useFilter();
@@ -19,17 +11,17 @@ export default function MinistryFilter() {
       {MINISTRIES.map((m) => {
         const active =
           selectedMinistries.length === 0 ||
-          selectedMinistries.includes(m.ministry);
+          selectedMinistries.includes(m.label);
         return (
           <button
-            key={m.ministry}
-            onClick={() => toggleMinistry(m.ministry)}
+            key={m.key}
+            onClick={() => toggleMinistry(m.label)}
             className={`px-2.5 py-1 rounded-full text-xs font-medium transition-all ${
               active ? "text-white shadow-sm" : "bg-gray-100 text-gray-400"
             }`}
             style={active ? { backgroundColor: m.color } : {}}
           >
-            {getShortName(m.ministry)}
+            {m.shortLabel}
           </button>
         );
       })}

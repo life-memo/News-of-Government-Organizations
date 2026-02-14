@@ -1,22 +1,12 @@
 import { prisma } from "@/lib/prisma";
 import { getDailySummary } from "@/lib/summary";
 import Link from "next/link";
-import ministriesData from "@/config/ministries.json";
+import { MINISTRIES, labelToKey, getMinistry } from "@/config/ministries";
 import {
   dayRangeJST,
   formatDateDisplay,
   formatTimeJST,
-  getShortName,
 } from "@/lib/dateUtils";
-
-interface MinistryConfig {
-  ministry: string;
-  color: string;
-}
-
-const MINISTRY_COLOR_MAP: Record<string, string> = Object.fromEntries(
-  (ministriesData as MinistryConfig[]).map((m) => [m.ministry, m.color])
-);
 
 interface PageProps {
   params: Promise<{ date: string }>;
@@ -42,18 +32,31 @@ export default async function DateDetailPage({ params }: PageProps) {
     orderBy: { publishedAt: "desc" },
   });
 
-  // Group by ministry
-  const byMinistry: Record<string, typeof items> = {};
+  // Group by ministryKey
+  const byKey: Record<string, typeof items> = {};
   for (const item of items) {
-    if (!byMinistry[item.ministry]) byMinistry[item.ministry] = [];
-    byMinistry[item.ministry].push(item);
+    const mk = labelToKey(item.ministry);
+    if (!byKey[mk]) byKey[mk] = [];
+    byKey[mk].push(item);
   }
 
-  // Get summaries
+  // Get summaries (API uses label)
   const overallSummary = await getDailySummary(date);
   const ministrySummaries: Record<string, { points: string[] }> = {};
-  for (const ministry of Object.keys(byMinistry)) {
-    ministrySummaries[ministry] = await getDailySummary(date, ministry);
+  for (const mk of Object.keys(byKey)) {
+    const def = getMinistry(mk);
+    ministrySummaries[mk] = await getDailySummary(date, def.label);
+  }
+
+  // Build sorted section list: registered ministries first (by count desc), then unknown
+  const sections = MINISTRIES.filter((m) => byKey[m.key]?.length)
+    .map((m) => ({ key: m.key, def: m, items: byKey[m.key] }))
+    .sort((a, b) => b.items.length - a.items.length);
+
+  for (const [mk, mkItems] of Object.entries(byKey)) {
+    if (!sections.some((s) => s.key === mk)) {
+      sections.push({ key: mk, def: getMinistry(mk), items: mkItems });
+    }
   }
 
   // Date navigation
@@ -90,7 +93,7 @@ export default async function DateDetailPage({ params }: PageProps) {
         </div>
         <div className="flex items-center gap-2 text-sm text-gray-500">
           <span>合計 {items.length} 件</span>
-          <span>/ {Object.keys(byMinistry).length} 省庁</span>
+          <span>/ {sections.length} 省庁</span>
         </div>
       </div>
 
@@ -121,41 +124,39 @@ export default async function DateDetailPage({ params }: PageProps) {
 
           {/* By ministry */}
           <div className="space-y-4">
-            {Object.entries(byMinistry)
-              .sort(([, a], [, b]) => b.length - a.length)
-              .map(([ministry, ministryItems]) => {
-                const color = MINISTRY_COLOR_MAP[ministry] || "#6b7280";
-                const summary = ministrySummaries[ministry];
+            {sections.map((section) => {
+                const { def, items: sectionItems } = section;
+                const summary = ministrySummaries[section.key];
 
                 return (
                   <div
-                    key={ministry}
+                    key={section.key}
                     className="bg-white rounded-lg border border-gray-200 overflow-hidden"
                   >
                     <div
                       className="px-4 py-3 flex items-center justify-between"
-                      style={{ borderLeft: `4px solid ${color}` }}
+                      style={{ borderLeft: `4px solid ${def.color}` }}
                     >
                       <div className="flex items-center gap-2">
                         <span
                           className="text-xs text-white px-1.5 py-0.5 rounded font-medium"
-                          style={{ backgroundColor: color }}
+                          style={{ backgroundColor: def.color }}
                         >
-                          {getShortName(ministry)}
+                          {def.shortLabel}
                         </span>
-                        <h2 className="font-semibold text-base">{ministry}</h2>
+                        <h2 className="font-semibold text-base">{def.label}</h2>
                       </div>
                       <span className="text-sm text-gray-500">
-                        {ministryItems.length}件
+                        {sectionItems.length}件
                       </span>
                     </div>
 
                     {summary && summary.points.length > 0 && (
                       <div className="px-4 py-2 bg-gray-50 border-b border-gray-100">
                         <ul className="space-y-0.5">
-                          {summary.points.slice(0, 3).map((point, i) => (
+                          {summary.points.slice(0, 3).map((point) => (
                             <li
-                              key={i}
+                              key={point}
                               className="text-xs text-gray-600 flex gap-1.5"
                             >
                               <span className="text-gray-400 flex-shrink-0">
@@ -169,7 +170,7 @@ export default async function DateDetailPage({ params }: PageProps) {
                     )}
 
                     <div className="divide-y divide-gray-100">
-                      {ministryItems.map((item) => {
+                      {sectionItems.map((item) => {
                         const timeStr = formatTimeJST(
                           new Date(item.publishedAt)
                         );

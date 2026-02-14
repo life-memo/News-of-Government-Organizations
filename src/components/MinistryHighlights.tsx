@@ -1,19 +1,14 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import ministriesData from "@/config/ministries.json";
-import { todayStringJST, getShortName, formatTimeJST } from "@/lib/dateUtils";
+import {
+  MINISTRIES,
+  labelToKey,
+  getMinistry,
+  type MinistryDef,
+} from "@/config/ministries";
+import { todayStringJST, formatTimeJST } from "@/lib/dateUtils";
 import { useFilter } from "./FilterContext";
-
-interface MinistryConfig {
-  ministry: string;
-  color: string;
-}
-
-const MINISTRIES: MinistryConfig[] = ministriesData as MinistryConfig[];
-const MINISTRY_COLOR_MAP: Record<string, string> = Object.fromEntries(
-  MINISTRIES.map((m) => [m.ministry, m.color])
-);
 
 interface Item {
   id: string;
@@ -26,43 +21,47 @@ interface Item {
 }
 
 interface MinistryGroup {
-  ministry: string;
+  ministryKey: string;
+  def: MinistryDef;
   items: Item[];
-  summary: { points: string[] };
+  summaryPoints: string[];
 }
 
 const ITEMS_PER_PAGE = 5;
 
+/* ─── アコーディオンセクション ─── */
+
 function AccordionSection({
   group,
-  defaultOpen,
+  isOpen,
+  onToggle,
 }: {
   group: MinistryGroup;
-  defaultOpen: boolean;
+  isOpen: boolean;
+  onToggle: () => void;
 }) {
-  const [isOpen, setIsOpen] = useState(defaultOpen);
   const [showCount, setShowCount] = useState(ITEMS_PER_PAGE);
-  const color = MINISTRY_COLOR_MAP[group.ministry] || "#6b7280";
-  const displayItems = group.items.slice(0, showCount);
-  const hasMore = group.items.length > showCount;
-  const displayPoints = (group.summary?.points || []).slice(0, 3);
+  const { def, items, summaryPoints } = group;
+  const displayItems = items.slice(0, showCount);
+  const hasMore = items.length > showCount;
+  const displayPoints = summaryPoints.slice(0, 3);
 
   return (
     <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={onToggle}
         className="w-full px-4 py-3 flex items-center justify-between hover:bg-gray-50 transition-colors"
-        style={{ borderLeft: `4px solid ${color}` }}
+        style={{ borderLeft: `4px solid ${def.color}` }}
       >
         <div className="flex items-center gap-2">
           <span
             className="text-xs text-white px-1.5 py-0.5 rounded font-medium"
-            style={{ backgroundColor: color }}
+            style={{ backgroundColor: def.color }}
           >
-            {getShortName(group.ministry)}
+            {def.shortLabel}
           </span>
-          <span className="font-semibold text-sm">{group.ministry}</span>
-          <span className="text-xs text-gray-400">{group.items.length}件</span>
+          <span className="font-semibold text-sm">{def.label}</span>
+          <span className="text-xs text-gray-400">{items.length}件</span>
         </div>
         <span
           className={`text-gray-400 text-xs transition-transform ${isOpen ? "rotate-180" : ""}`}
@@ -71,14 +70,14 @@ function AccordionSection({
         </span>
       </button>
 
-      <div className={`accordion-content ${isOpen ? "open" : ""}`}>
+      {isOpen && (
         <div>
           {displayPoints.length > 0 && (
             <div className="px-4 py-2 bg-gray-50 border-t border-gray-100">
               <ul className="space-y-0.5">
-                {displayPoints.map((point, i) => (
+                {displayPoints.map((point) => (
                   <li
-                    key={i}
+                    key={point}
                     className="text-xs text-gray-600 flex gap-1.5"
                   >
                     <span className="text-gray-400 flex-shrink-0">-</span>
@@ -127,20 +126,29 @@ function AccordionSection({
               onClick={() => setShowCount((c) => c + ITEMS_PER_PAGE)}
               className="w-full py-2 text-xs text-blue-600 hover:bg-blue-50 transition-colors border-t border-gray-100"
             >
-              さらに{Math.min(ITEMS_PER_PAGE, group.items.length - showCount)}
+              さらに{Math.min(ITEMS_PER_PAGE, items.length - showCount)}
               件を表示
             </button>
           )}
         </div>
-      </div>
+      )}
     </div>
   );
 }
+
+/* ─── メインコンポーネント ─── */
 
 export default function MinistryHighlights() {
   const { selectedMinistries } = useFilter();
   const [groups, setGroups] = useState<MinistryGroup[]>([]);
   const [loading, setLoading] = useState(true);
+
+  // ministryKey → boolean（初期値空 = 全て false = 全閉）
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
+
+  const toggle = useCallback((key: string) => {
+    setOpenSections((prev) => ({ ...prev, [key]: !prev[key] }));
+  }, []);
 
   const fetchData = useCallback(async () => {
     setLoading(true);
@@ -158,22 +166,45 @@ export default function MinistryHighlights() {
       const itemsData = itemsRes.ok ? await itemsRes.json() : { items: [] };
       const summaryData = summaryRes.ok ? await summaryRes.json() : {};
 
-      const byMinistry: Record<string, Item[]> = {};
+      // 1. items を ministryKey でグルーピング
+      const byKey: Record<string, Item[]> = {};
       for (const item of itemsData.items || []) {
-        if (!byMinistry[item.ministry]) byMinistry[item.ministry] = [];
-        byMinistry[item.ministry].push(item);
+        const mk = labelToKey(item.ministry);
+        if (!byKey[mk]) byKey[mk] = [];
+        byKey[mk].push(item);
       }
 
+      // 2. ministrySummaries (API は label キー) → key で引く
       const ministrySummaries: Record<string, { points: string[] }> =
         summaryData.ministrySummaries || {};
 
-      const result: MinistryGroup[] = Object.entries(byMinistry)
-        .sort(([, a], [, b]) => b.length - a.length)
-        .map(([ministry, items]) => ({
-          ministry,
-          items,
-          summary: ministrySummaries[ministry] || { points: [] },
-        }));
+      // 3. MINISTRIES 定義順に、データがあるものだけ結果に含める
+      //    （件数降順でソートも維持）
+      const result: MinistryGroup[] = MINISTRIES.filter(
+        (m) => byKey[m.key] && byKey[m.key].length > 0,
+      )
+        .map((m) => ({
+          ministryKey: m.key,
+          def: m,
+          items: byKey[m.key],
+          summaryPoints:
+            ministrySummaries[m.label]?.points || [],
+        }))
+        .sort((a, b) => b.items.length - a.items.length);
+
+      // 未登録省庁がDBにあった場合もフォールバックで追加
+      for (const [mk, items] of Object.entries(byKey)) {
+        if (!result.some((g) => g.ministryKey === mk)) {
+          const def = getMinistry(mk);
+          result.push({
+            ministryKey: mk,
+            def,
+            items,
+            summaryPoints:
+              ministrySummaries[def.label]?.points || [],
+          });
+        }
+      }
 
       setGroups(result);
     } catch (e) {
@@ -216,9 +247,10 @@ export default function MinistryHighlights() {
       </h2>
       {groups.map((group) => (
         <AccordionSection
-          key={group.ministry}
+          key={group.ministryKey}
           group={group}
-          defaultOpen={true}
+          isOpen={!!openSections[group.ministryKey]}
+          onToggle={() => toggle(group.ministryKey)}
         />
       ))}
     </div>
