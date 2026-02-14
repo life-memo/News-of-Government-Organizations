@@ -92,15 +92,20 @@ export default function DayPanel({ date, onClose }: DayPanelProps) {
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <Link
-              href={`/date/${date}`}
-              className="text-xs text-blue-600 hover:text-blue-800"
-              title="詳細ページ"
-            >
-              &#x2197; 詳細
-            </Link>
+            {date ? (
+              <Link
+                href={`/date/${date}`}
+                onClick={(e) => e.stopPropagation()}
+                className="text-xs text-blue-600 hover:text-blue-800"
+                title="詳細ページ"
+              >
+                &#x2197; 詳細
+              </Link>
+            ) : (
+              <span className="text-xs text-gray-300">&#x2197; 詳細</span>
+            )}
             <button
-              onClick={onClose}
+              onClick={(e) => { e.stopPropagation(); onClose(); }}
               className="p-1 hover:bg-gray-100 rounded text-gray-400 hover:text-gray-600"
             >
               &#x2715;

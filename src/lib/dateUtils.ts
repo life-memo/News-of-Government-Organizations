@@ -15,6 +15,28 @@ export function toDateStringJST(date: Date): string {
   return jst.toISOString().split("T")[0];
 }
 
+/** Date → "YYYY-MM-DD"（JST基準・ゼロ埋め）。全箇所でこの関数を使う */
+export function toYMD(date: Date): string {
+  const jst = new Date(date.getTime() + JST_OFFSET_MS);
+  const y = jst.getUTCFullYear();
+  const m = String(jst.getUTCMonth() + 1).padStart(2, "0");
+  const d = String(jst.getUTCDate()).padStart(2, "0");
+  return `${y}-${m}-${d}`;
+}
+
+/** "YYYY-MM-DD" → Date（JST正午）。不正な場合は null を返す */
+export function parseYMD(ymd: string): Date | null {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(ymd)) return null;
+  const d = new Date(`${ymd}T12:00:00+09:00`);
+  if (isNaN(d.getTime())) return null;
+  // 日付がパース後に変わっていないか確認（例: 02-30 → 03-02 の防止）
+  const [year, month, day] = ymd.split("-").map(Number);
+  if (d.getFullYear() !== year || d.getMonth() + 1 !== month || d.getDate() !== day) {
+    return null;
+  }
+  return d;
+}
+
 /** Get today's date string in JST */
 export function todayStringJST(): string {
   return toDateStringJST(new Date());

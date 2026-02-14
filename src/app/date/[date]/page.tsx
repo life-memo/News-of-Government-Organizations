@@ -6,6 +6,8 @@ import {
   dayRangeJST,
   formatDateDisplay,
   formatTimeJST,
+  parseYMD,
+  toYMD,
 } from "@/lib/dateUtils";
 
 interface PageProps {
@@ -15,7 +17,9 @@ interface PageProps {
 export default async function DateDetailPage({ params }: PageProps) {
   const { date } = await params;
 
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+  // Validate date parameter
+  const parsed = parseYMD(date);
+  if (!parsed) {
     return (
       <div className="text-center py-20 text-gray-500">
         無効な日付です。形式: YYYY-MM-DD
@@ -23,14 +27,36 @@ export default async function DateDetailPage({ params }: PageProps) {
     );
   }
 
-  const { start, end } = dayRangeJST(date);
+  // Fetch data with error handling
+  let items: Awaited<ReturnType<typeof prisma.item.findMany>> = [];
+  let fetchError = false;
 
-  const items = await prisma.item.findMany({
-    where: {
-      publishedAt: { gte: start, lte: end },
-    },
-    orderBy: { publishedAt: "desc" },
-  });
+  try {
+    const { start, end } = dayRangeJST(date);
+    items = await prisma.item.findMany({
+      where: {
+        publishedAt: { gte: start, lte: end },
+      },
+      orderBy: { publishedAt: "desc" },
+    });
+  } catch (e) {
+    console.error("/date/[date] DB fetch error:", e);
+    fetchError = true;
+  }
+
+  if (fetchError) {
+    return (
+      <div className="text-center py-20">
+        <p className="text-gray-500 mb-4">データの取得に失敗しました</p>
+        <Link
+          href={`/date/${date}`}
+          className="text-sm text-blue-600 hover:text-blue-800"
+        >
+          再読み込み
+        </Link>
+      </div>
+    );
+  }
 
   // Group by ministryKey
   const byKey: Record<string, typeof items> = {};
@@ -59,18 +85,11 @@ export default async function DateDetailPage({ params }: PageProps) {
     }
   }
 
-  // Date navigation
-  const d = new Date(`${date}T12:00:00+09:00`);
-  const prevDate = new Date(d);
+  // Date navigation (using toYMD for consistent formatting)
+  const prevDate = new Date(parsed);
   prevDate.setDate(prevDate.getDate() - 1);
-  const nextDate = new Date(d);
+  const nextDate = new Date(parsed);
   nextDate.setDate(nextDate.getDate() + 1);
-  const fmt = (dt: Date) => {
-    const y = dt.getFullYear();
-    const m = String(dt.getMonth() + 1).padStart(2, "0");
-    const day = String(dt.getDate()).padStart(2, "0");
-    return `${y}-${m}-${day}`;
-  };
 
   return (
     <div>
@@ -78,14 +97,14 @@ export default async function DateDetailPage({ params }: PageProps) {
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <Link
-            href={`/date/${fmt(prevDate)}`}
+            href={`/date/${toYMD(prevDate)}`}
             className="p-2 hover:bg-gray-100 rounded-md transition-colors text-gray-500"
           >
             &larr;
           </Link>
           <h1 className="text-xl font-bold">{formatDateDisplay(date)}</h1>
           <Link
-            href={`/date/${fmt(nextDate)}`}
+            href={`/date/${toYMD(nextDate)}`}
             className="p-2 hover:bg-gray-100 rounded-md transition-colors text-gray-500"
           >
             &rarr;
