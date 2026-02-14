@@ -1,0 +1,117 @@
+[
+  {
+    "ministry": "内閣府",
+    "color": "#2563eb",
+    "sources": [
+      {
+        "name": "新着情報",
+        "url": "https://www.cao.go.jp/others/whatsnew.xml",
+        "type": "rss"
+      }
+    ]
+  },
+  {
+    "ministry": "法務省",
+    "color": "#7c3aed",
+    "sources": [
+      {
+        "name": "新着情報",
+        "url": "https://www.moj.go.jp/rssfeed/whatsnew/rss2.xml",
+        "type": "rss"
+      }
+    ]
+  },
+  {
+    "ministry": "経済産業省",
+    "color": "#dc2626",
+    "sources": [
+      {
+        "name": "ニュースリリース",
+        "url": "https://www.meti.go.jp/press/index.rdf",
+        "type": "rss"
+      },
+      {
+        "name": "新着情報",
+        "url": "https://www.meti.go.jp/topic/index.rdf",
+        "type": "rss"
+      }
+    ]
+  },
+  {
+    "ministry": "国土交通省",
+    "color": "#ea580c",
+    "sources": [
+      {
+        "name": "報道発表",
+        "url": "https://www.mlit.go.jp/report/press/index.rdf",
+        "type": "rss"
+      }
+    ]
+  },
+  {
+    "ministry": "防衛省",
+    "color": "#059669",
+    "sources": [
+      {
+        "name": "新着情報",
+        "url": "https://www.mod.go.jp/j/rss/index.xml",
+        "type": "rss"
+      }
+    ]
+  },
+  {
+    "ministry": "外務省",
+    "color": "#0891b2",
+    "sources": [
+      {
+        "name": "新着情報",
+        "url": "https://www.mofa.go.jp/mofaj/xml/whatsnew.xml",
+        "type": "rss"
+      }
+    ]
+  },
+  {
+    "ministry": "総務省",
+    "color": "#4f46e5",
+    "sources": [
+      {
+        "name": "報道資料",
+        "url": "https://www.soumu.go.jp/menu_news/s-news/index.rdf",
+        "type": "rss"
+      }
+    ]
+  },
+  {
+    "ministry": "厚生労働省",
+    "color": "#be185d",
+    "sources": [
+      {
+        "name": "新着情報",
+        "url": "https://www.mhlw.go.jp/stf/rss/whatsnew.xml",
+        "type": "rss"
+      }
+    ]
+  },
+  {
+    "ministry": "文部科学省",
+    "color": "#ca8a04",
+    "sources": [
+      {
+        "name": "新着情報",
+        "url": "https://www.mext.go.jp/b_menu/news/index.rdf",
+        "type": "rss"
+      }
+    ]
+  },
+  {
+    "ministry": "農林水産省",
+    "color": "#16a34a",
+    "sources": [
+      {
+        "name": "報道発表",
+        "url": "https://www.maff.go.jp/j/press/index.rdf",
+        "type": "rss"
+      }
+    ]
+  }
+]
