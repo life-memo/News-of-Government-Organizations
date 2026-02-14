@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "tsx scripts/init-db.ts && tsx scripts/seed.ts && next build",
     "start": "next start",
     "lint": "eslint",
     "db:init": "tsx scripts/init-db.ts",

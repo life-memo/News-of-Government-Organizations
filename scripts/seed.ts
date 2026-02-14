@@ -13,6 +13,22 @@ function generateHash(title: string, url: string, publishedAt: string): string {
 }
 
 const SEED_DATA = [
+  // === 2026-02-14 (今日) ===
+  { ministry: "経済産業省", sourceName: "ニュースリリース", title: "「DX投資促進税制」の適用期限延長について", url: "https://www.meti.go.jp/press/2025/02/20260214001/20260214001.html", publishedAt: "2026-02-14T01:00:00Z", summaryRaw: "DX投資促進税制の適用期限を2年間延長する方針を公表しました。" },
+  { ministry: "経済産業省", sourceName: "新着情報", title: "令和8年度「ものづくり補助金」の公募開始について", url: "https://www.meti.go.jp/press/2025/02/20260214002/20260214002.html", publishedAt: "2026-02-14T02:00:00Z", summaryRaw: "中小企業の設備投資を支援するものづくり補助金の新たな公募を開始します。" },
+  { ministry: "国土交通省", sourceName: "報道発表", title: "自動運転車の公道走行に関する新ガイドライン策定", url: "https://www.mlit.go.jp/report/press/jidosha07_hh_000001_00001.html", publishedAt: "2026-02-14T00:30:00Z", summaryRaw: "レベル4自動運転車の公道走行に関する安全基準ガイドラインを策定。" },
+  { ministry: "国土交通省", sourceName: "報道発表", title: "令和8年1月の建設工事受注動態統計（速報値）", url: "https://www.mlit.go.jp/report/press/joho04_hh_000001_00006.html", publishedAt: "2026-02-14T05:00:00Z", summaryRaw: "1月の建設工事受注額は前年同月比4.1%増。公共工事が堅調。" },
+  { ministry: "厚生労働省", sourceName: "新着情報", title: "インフルエンザの発生状況について（第7週）", url: "https://www.mhlw.go.jp/stf/newpage_00010.html", publishedAt: "2026-02-14T05:00:00Z", summaryRaw: "令和8年第7週のインフルエンザ定点当たり報告数は前週比減少。" },
+  { ministry: "厚生労働省", sourceName: "新着情報", title: "「働き方改革推進支援助成金」の拡充について", url: "https://www.mhlw.go.jp/stf/newpage_00011.html", publishedAt: "2026-02-14T03:00:00Z", summaryRaw: "中小企業の働き方改革を支援する助成金制度を拡充しました。" },
+  { ministry: "外務省", sourceName: "新着情報", title: "日EU首脳電話会談について", url: "https://www.mofa.go.jp/mofaj/ecm/ec/pageit_000001_00003.html", publishedAt: "2026-02-14T09:00:00Z", summaryRaw: "日EU首脳が電話会談を実施し、経済安全保障やグリーン・アライアンスについて協議。" },
+  { ministry: "防衛省", sourceName: "新着情報", title: "令和8年度 自衛隊統合演習の実施について", url: "https://www.mod.go.jp/j/press/news/2026/02/14a.html", publishedAt: "2026-02-14T01:30:00Z", summaryRaw: "陸海空自衛隊の統合演習を実施。サイバー防衛能力の強化を確認。" },
+  { ministry: "総務省", sourceName: "報道資料", title: "「デジタル田園都市国家構想」推進交付金の採択結果", url: "https://www.soumu.go.jp/menu_news/s-news/01ryutsu06_02000001_00003.html", publishedAt: "2026-02-14T02:30:00Z", summaryRaw: "デジタル田園都市国家構想推進交付金の令和8年度第1次採択結果を公表。" },
+  { ministry: "文部科学省", sourceName: "新着情報", title: "大学発スタートアップ創出支援事業の採択結果", url: "https://www.mext.go.jp/b_menu/houdou/2026/02/1413004_00001.htm", publishedAt: "2026-02-14T06:00:00Z", summaryRaw: "大学発スタートアップ創出支援事業の令和8年度採択結果を公表。15大学を採択。" },
+  { ministry: "農林水産省", sourceName: "報道発表", title: "食品ロス削減推進法に基づく基本方針の改定", url: "https://www.maff.go.jp/j/press/shokuhin/recycle/260214.html", publishedAt: "2026-02-14T01:00:00Z", summaryRaw: "食品ロス削減推進法に基づく基本方針を改定。2030年度目標の達成に向けた施策を強化。" },
+  { ministry: "内閣府", sourceName: "新着情報", title: "経済財政諮問会議（令和8年第3回）議事要旨", url: "https://www.cao.go.jp/keizai3/shimon/2026/0214shimon/main.html", publishedAt: "2026-02-14T07:00:00Z", summaryRaw: "経済財政諮問会議の議事要旨を公表。2026年度経済見通しについて議論。" },
+  { ministry: "法務省", sourceName: "新着情報", title: "技能実習制度に代わる「育成就労制度」の施行準備状況", url: "https://www.moj.go.jp/isa/publications/press/07_00002.html", publishedAt: "2026-02-14T00:00:00Z", summaryRaw: "育成就労制度の施行に向けた準備状況と今後のスケジュールを公表。" },
+
+  // === 2026-02-13 ===
   { ministry: "経済産業省", sourceName: "ニュースリリース", title: "「AI事業者ガイドライン」の改定案に関する意見公募の結果について", url: "https://www.meti.go.jp/press/2025/02/20260213001/20260213001.html", publishedAt: "2026-02-13T10:00:00Z", summaryRaw: "AI事業者ガイドラインの改定案に対するパブリックコメントの結果を公表しました。" },
   { ministry: "経済産業省", sourceName: "ニュースリリース", title: "令和6年度補正予算「中小企業等事業再構築促進事業」の公募について", url: "https://www.meti.go.jp/press/2025/02/20260213002/20260213002.html", publishedAt: "2026-02-13T11:00:00Z", summaryRaw: "事業再構築補助金の新たな公募を開始します。" },
   { ministry: "国土交通省", sourceName: "報道発表", title: "令和7年地価公示の概要について", url: "https://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo04_hh_000001_00001.html", publishedAt: "2026-02-13T09:30:00Z", summaryRaw: "令和7年1月1日時点の地価公示結果を取りまとめました。全国平均で4年連続の上昇。" },
