@@ -52,12 +52,16 @@ export default function DayPanel({ date, onClose }: DayPanelProps) {
     setShowCount({});
 
     Promise.all([
-      fetch(`/api/items?date=${date}&limit=200`).then((r) => r.json()),
-      fetch(`/api/daily-summary?date=${date}`).then((r) => r.json()),
+      fetch(`/api/items?date=${date}&limit=200`).then((r) =>
+        r.ok ? r.json() : { items: [] }
+      ),
+      fetch(`/api/daily-summary?date=${date}`).then((r) =>
+        r.ok ? r.json() : null
+      ),
     ])
       .then(([itemsData, summaryData]) => {
-        setItems(itemsData.items || []);
-        setSummary(summaryData);
+        setItems(itemsData?.items || []);
+        setSummary(summaryData?.points ? summaryData : null);
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -127,7 +131,7 @@ export default function DayPanel({ date, onClose }: DayPanelProps) {
         ) : (
           <div className="divide-y divide-gray-100">
             {/* Summary */}
-            {summary && summary.points.length > 0 && (
+            {summary && summary.points && summary.points.length > 0 && (
               <div className="px-4 py-3 bg-blue-50">
                 <ul className="space-y-1">
                   {summary.points.slice(0, 3).map((point, i) => (

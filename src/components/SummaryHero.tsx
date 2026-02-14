@@ -18,9 +18,12 @@ export default function SummaryHero() {
   useEffect(() => {
     const today = todayStringJST();
     fetch(`/api/summary?date=${today}`)
-      .then((r) => r.json())
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
       .then((json) => {
-        setData(json);
+        if (json && !json.error) setData(json);
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -41,7 +44,8 @@ export default function SummaryHero() {
 
   if (!data) return null;
 
-  const displayPoints = data.points.slice(0, 3);
+  const displayPoints = (data.points || []).slice(0, 3);
+  const topics = data.topics || [];
 
   return (
     <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-6 text-white mb-6">
@@ -52,11 +56,11 @@ export default function SummaryHero() {
         </div>
         <div className="flex gap-4 text-right">
           <div>
-            <div className="text-2xl font-bold">{data.totalItems}</div>
+            <div className="text-2xl font-bold">{data.totalItems ?? 0}</div>
             <div className="text-blue-200 text-xs">件</div>
           </div>
           <div>
-            <div className="text-2xl font-bold">{data.ministryCount}</div>
+            <div className="text-2xl font-bold">{data.ministryCount ?? 0}</div>
             <div className="text-blue-200 text-xs">省庁</div>
           </div>
         </div>
@@ -73,9 +77,9 @@ export default function SummaryHero() {
         </ul>
       )}
 
-      {data.topics.length > 0 && (
+      {topics.length > 0 && (
         <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-blue-500">
-          {data.topics.map((topic) => (
+          {topics.map((topic) => (
             <span
               key={topic}
               className="bg-blue-500/50 text-blue-50 text-xs px-2 py-0.5 rounded-full"

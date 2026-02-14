@@ -45,9 +45,15 @@ export default function Calendar() {
     if (selectedMinistries.length > 0) {
       params.set("ministry", selectedMinistries.join(","));
     }
-    const res = await fetch(`/api/calendar?${params}`);
-    const json = await res.json();
-    setData(json);
+    try {
+      const res = await fetch(`/api/calendar?${params}`);
+      if (res.ok) {
+        const json = await res.json();
+        setData(json);
+      }
+    } catch (e) {
+      console.error("Failed to fetch calendar:", e);
+    }
     setLoading(false);
   }, [year, month, selectedMinistries]);
 

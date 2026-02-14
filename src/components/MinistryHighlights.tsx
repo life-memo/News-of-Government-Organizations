@@ -45,7 +45,7 @@ function AccordionSection({
   const color = MINISTRY_COLOR_MAP[group.ministry] || "#6b7280";
   const displayItems = group.items.slice(0, showCount);
   const hasMore = group.items.length > showCount;
-  const displayPoints = group.summary.points.slice(0, 3);
+  const displayPoints = (group.summary?.points || []).slice(0, 3);
 
   return (
     <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
@@ -155,8 +155,8 @@ export default function MinistryHighlights() {
         fetch(`/api/items?${params}`),
         fetch(`/api/summary?date=${today}`),
       ]);
-      const itemsData = await itemsRes.json();
-      const summaryData = await summaryRes.json();
+      const itemsData = itemsRes.ok ? await itemsRes.json() : { items: [] };
+      const summaryData = summaryRes.ok ? await summaryRes.json() : {};
 
       const byMinistry: Record<string, Item[]> = {};
       for (const item of itemsData.items || []) {
