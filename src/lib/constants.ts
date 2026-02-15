@@ -3,12 +3,15 @@ import ministriesData from "@/config/ministries.json";
 export interface SourceConfig {
   name: string;
   url: string;
-  type: "rss" | "atom" | "scrape";
+  type: "rss" | "atom" | "scrape" | "rss-discovery";
 }
 
 export interface MinistryConfig {
+  key: string;
   ministry: string;
+  short: string;
   color: string;
+  siteUrl: string;
   sources: SourceConfig[];
 }
 
