@@ -1,25 +1,66 @@
-import { prisma } from "@/lib/prisma";
-import { getDailySummary } from "@/lib/summary";
+"use client";
+
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 import Link from "next/link";
 import { MINISTRIES, labelToKey, getMinistry } from "@/config/ministries";
 import {
-  dayRangeJST,
   formatDateDisplay,
   formatTimeJST,
   parseYMD,
-  toYMD,
 } from "@/lib/dateUtils";
 
-interface PageProps {
-  params: Promise<{ date: string }>;
+interface Item {
+  id: string;
+  ministry: string;
+  source_name: string;
+  title: string;
+  url: string;
+  published_at: string;
 }
 
-export default async function DateDetailPage({ params }: PageProps) {
-  const { date } = await params;
+export default function DateDetailPage() {
+  const params = useParams();
+  const date = params?.date as string;
+  const [items, setItems] = useState<Item[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
-  // Validate date parameter
-  const parsed = parseYMD(date);
-  if (!parsed) {
+  useEffect(() => {
+    if (!date) return;
+
+    const parsed = parseYMD(date);
+    if (!parsed) {
+      setError(true);
+      setLoading(false);
+      return;
+    }
+
+    fetch(`/api/items-json?date=${date}&limit=500`)
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
+      .then((data) => {
+        setItems(data.items || []);
+        setLoading(false);
+      })
+      .catch(() => {
+        setError(true);
+        setLoading(false);
+      });
+  }, [date]);
+
+  if (loading) {
+    return (
+      <div className="text-center py-20">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+        <p className="text-gray-500 mt-4">読み込み中...</p>
+      </div>
+    );
+  }
+
+  if (error || !date) {
     return (
       <div className="text-center py-20 text-gray-500">
         無効な日付です。形式: YYYY-MM-DD
@@ -27,218 +68,96 @@ export default async function DateDetailPage({ params }: PageProps) {
     );
   }
 
-  // Fetch data with error handling
-  let items: Awaited<ReturnType<typeof prisma.item.findMany>> = [];
-  let fetchError = false;
-
-  try {
-    const { start, end } = dayRangeJST(date);
-    items = await prisma.item.findMany({
-      where: {
-        publishedAt: { gte: start, lte: end },
-      },
-      orderBy: { publishedAt: "desc" },
-    });
-  } catch (e) {
-    console.error("/date/[date] DB fetch error:", e);
-    fetchError = true;
-  }
-
-  if (fetchError) {
-    return (
-      <div className="text-center py-20">
-        <p className="text-gray-500 mb-4">データの取得に失敗しました</p>
-        <Link
-          href={`/date/${date}`}
-          className="text-sm text-blue-600 hover:text-blue-800"
-        >
-          再読み込み
-        </Link>
-      </div>
-    );
-  }
-
-  // Group by ministryKey
-  const byKey: Record<string, typeof items> = {};
+  // Group by ministry
+  const byKey: Record<string, { def: any; items: Item[] }> = {};
   for (const item of items) {
     const mk = labelToKey(item.ministry);
-    if (!byKey[mk]) byKey[mk] = [];
-    byKey[mk].push(item);
-  }
-
-  // Get summaries (API uses label)
-  const overallSummary = await getDailySummary(date);
-  const ministrySummaries: Record<string, { points: string[] }> = {};
-  for (const mk of Object.keys(byKey)) {
-    const def = getMinistry(mk);
-    ministrySummaries[mk] = await getDailySummary(date, def.label);
-  }
-
-  // Build sorted section list: registered ministries first (by count desc), then unknown
-  const sections = MINISTRIES.filter((m) => byKey[m.key]?.length)
-    .map((m) => ({ key: m.key, def: m, items: byKey[m.key] }))
-    .sort((a, b) => b.items.length - a.items.length);
-
-  for (const [mk, mkItems] of Object.entries(byKey)) {
-    if (!sections.some((s) => s.key === mk)) {
-      sections.push({ key: mk, def: getMinistry(mk), items: mkItems });
+    if (!byKey[mk]) {
+      byKey[mk] = { def: getMinistry(mk), items: [] };
     }
+    byKey[mk].items.push(item);
   }
 
-  // Date navigation (using toYMD for consistent formatting)
-  const prevDate = new Date(parsed);
-  prevDate.setDate(prevDate.getDate() - 1);
-  const nextDate = new Date(parsed);
-  nextDate.setDate(nextDate.getDate() + 1);
+  const sections = Object.values(byKey).sort(
+    (a, b) => b.items.length - a.items.length
+  );
 
   return (
-    <div>
+    <div className="max-w-5xl mx-auto px-4 py-8">
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center gap-3">
-          <Link
-            href={`/date/${toYMD(prevDate)}`}
-            className="p-2 hover:bg-gray-100 rounded-md transition-colors text-gray-500"
-          >
-            &larr;
-          </Link>
-          <h1 className="text-xl font-bold">{formatDateDisplay(date)}</h1>
-          <Link
-            href={`/date/${toYMD(nextDate)}`}
-            className="p-2 hover:bg-gray-100 rounded-md transition-colors text-gray-500"
-          >
-            &rarr;
-          </Link>
-        </div>
-        <div className="flex items-center gap-2 text-sm text-gray-500">
-          <span>合計 {items.length} 件</span>
-          <span>/ {sections.length} 省庁</span>
-        </div>
+      <div className="mb-6">
+        <Link
+          href="/"
+          className="inline-flex items-center text-sm text-blue-600 hover:text-blue-700 mb-3"
+        >
+          ← トップに戻る
+        </Link>
+        <h1 className="text-2xl font-bold text-gray-900">
+          {formatDateDisplay(date)}
+        </h1>
+        <p className="text-gray-500 text-sm mt-1">
+          {items.length}件の新着情報
+        </p>
       </div>
 
-      {items.length === 0 ? (
-        <div className="bg-white rounded-lg border border-gray-200 p-12 text-center text-gray-400">
+      {items.length === 0 && (
+        <div className="text-center py-20 text-gray-500">
           この日の新着情報はありません
         </div>
-      ) : (
-        <>
-          {/* Overall summary */}
-          {overallSummary.points.length > 0 && (
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-              <h2 className="text-sm font-semibold text-blue-800 mb-2">
-                この日の全体要約
-              </h2>
-              <ul className="space-y-1">
-                {overallSummary.points.slice(0, 3).map((point, i) => (
-                  <li key={i} className="text-sm text-blue-900 flex gap-2">
-                    <span className="text-blue-400 flex-shrink-0">
-                      &#x25B8;
-                    </span>
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
+      )}
+
+      {/* Ministry sections */}
+      <div className="space-y-6">
+        {sections.map(({ def, items: ministryItems }) => (
+          <div
+            key={def.key}
+            className="bg-white rounded-lg border border-gray-200 overflow-hidden"
+          >
+            <div
+              className="px-4 py-3 font-semibold text-sm flex items-center gap-2"
+              style={{ borderLeft: `4px solid ${def.color}` }}
+            >
+              <span
+                className="text-xs text-white px-1.5 py-0.5 rounded font-medium"
+                style={{ backgroundColor: def.color }}
+              >
+                {def.shortLabel}
+              </span>
+              <span>{def.label}</span>
+              <span className="text-xs text-gray-400">
+                {ministryItems.length}件
+              </span>
             </div>
-          )}
 
-          {/* By ministry */}
-          <div className="space-y-4">
-            {sections.map((section) => {
-                const { def, items: sectionItems } = section;
-                const summary = ministrySummaries[section.key];
-
-                return (
-                  <div
-                    key={section.key}
-                    className="bg-white rounded-lg border border-gray-200 overflow-hidden"
-                  >
-                    <div
-                      className="px-4 py-3 flex items-center justify-between"
-                      style={{ borderLeft: `4px solid ${def.color}` }}
-                    >
-                      <div className="flex items-center gap-2">
-                        <span
-                          className="text-xs text-white px-1.5 py-0.5 rounded font-medium"
-                          style={{ backgroundColor: def.color }}
-                        >
-                          {def.shortLabel}
-                        </span>
-                        <h2 className="font-semibold text-base">{def.label}</h2>
+            <ul className="divide-y divide-gray-100">
+              {ministryItems.map((item) => (
+                <li key={item.id} className="px-4 py-3 hover:bg-gray-50">
+                  <div className="flex items-start gap-3">
+                    <span className="text-xs text-gray-400 mt-0.5 min-w-[3rem]">
+                      {item.published_at
+                        ? formatTimeJST(item.published_at)
+                        : "--:--"}
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-blue-600 hover:text-blue-800 hover:underline line-clamp-2"
+                      >
+                        {item.title}
+                      </a>
+                      <div className="text-xs text-gray-400 mt-1">
+                        {item.source_name}
                       </div>
-                      <span className="text-sm text-gray-500">
-                        {sectionItems.length}件
-                      </span>
-                    </div>
-
-                    {summary && summary.points.length > 0 && (
-                      <div className="px-4 py-2 bg-gray-50 border-b border-gray-100">
-                        <ul className="space-y-0.5">
-                          {summary.points.slice(0, 3).map((point) => (
-                            <li
-                              key={point}
-                              className="text-xs text-gray-600 flex gap-1.5"
-                            >
-                              <span className="text-gray-400 flex-shrink-0">
-                                -
-                              </span>
-                              <span>{point}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-
-                    <div className="divide-y divide-gray-100">
-                      {sectionItems.map((item) => {
-                        const timeStr = item.publishedAt
-                          ? formatTimeJST(new Date(item.publishedAt))
-                          : "--:--";
-
-                        return (
-                          <div key={item.id} className="px-4 py-3">
-                            <div className="flex items-start gap-3">
-                              <span className="text-xs text-gray-400 mt-0.5 flex-shrink-0 font-mono w-10">
-                                {timeStr}
-                              </span>
-                              <div className="flex-1 min-w-0">
-                                <a
-                                  href={item.url}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="text-sm font-medium text-gray-900 hover:text-blue-600 transition-colors line-clamp-2"
-                                >
-                                  {item.title}
-                                  <span className="inline-block ml-1 text-gray-300 text-xs">
-                                    &#x2197;
-                                  </span>
-                                </a>
-                                {item.summaryRaw && (
-                                  <p className="text-xs text-gray-500 mt-1 line-clamp-1">
-                                    {item.summaryRaw}
-                                  </p>
-                                )}
-                                <div className="flex items-center gap-2 mt-1">
-                                  <span className="text-[10px] text-gray-400">
-                                    {item.sourceName}
-                                  </span>
-                                  {item.updatedFlag && (
-                                    <span className="text-[10px] bg-yellow-100 text-yellow-700 px-1 rounded">
-                                      更新
-                                    </span>
-                                  )}
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })}
                     </div>
                   </div>
-                );
-              })}
+                </li>
+              ))}
+            </ul>
           </div>
-        </>
-      )}
+        ))}
+      </div>
     </div>
   );
 }
