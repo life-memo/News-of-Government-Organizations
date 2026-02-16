@@ -1,0 +1,9 @@
+prisma/*.db
+prisma/*.db-*
+node_modules
+.next
+.env.local
+scripts/init-db.ts
+scripts/seed.ts
+scripts/fetch.ts
+scripts/backfill.ts
