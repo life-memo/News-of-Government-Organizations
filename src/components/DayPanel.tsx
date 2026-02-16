@@ -38,17 +38,11 @@ export default function DayPanel({ date, onClose }: DayPanelProps) {
     setLoading(true);
     setShowCount({});
 
-    Promise.all([
-      fetch(`/api/items?date=${date}&limit=200`).then((r) =>
-        r.ok ? r.json() : { items: [] }
-      ),
-      fetch(`/api/daily-summary?date=${date}`).then((r) =>
-        r.ok ? r.json() : null
-      ),
-    ])
-      .then(([itemsData, summaryData]) => {
+    fetch(`/api/items-json?date=${date}&limit=200`)
+      .then((r) => r.ok ? r.json() : { items: [] })
+      .then((itemsData) => {
         setItems(itemsData?.items || []);
-        setSummary(summaryData?.points ? summaryData : null);
+        setSummary(null);
         setLoading(false);
       })
       .catch(() => setLoading(false));

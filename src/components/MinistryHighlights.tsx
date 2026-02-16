@@ -160,12 +160,9 @@ export default function MinistryHighlights() {
     }
 
     try {
-      const [itemsRes, summaryRes] = await Promise.all([
-        fetch(`/api/items?${params}`),
-        fetch(`/api/summary?date=${today}`),
-      ]);
+      const itemsRes = await fetch(`/api/items-json?${params}`);
       const itemsData = itemsRes.ok ? await itemsRes.json() : { items: [] };
-      const summaryData = summaryRes.ok ? await summaryRes.json() : {};
+      const summaryData = {};
 
       // 1. items を ministryKey でグルーピング
       const byKey: Record<string, Item[]> = {};

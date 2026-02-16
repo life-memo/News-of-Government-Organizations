@@ -17,13 +17,25 @@ export default function SummaryHero() {
 
   useEffect(() => {
     const today = todayStringJST();
-    fetch(`/api/summary?date=${today}`)
+    // JSONファイルから今日のデータを取得
+    fetch(`/api/items-json?date=${today}`)
       .then((r) => {
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         return r.json();
       })
       .then((json) => {
-        if (json && !json.error) setData(json);
+        if (json && json.items) {
+          // 省庁ごとにグループ化
+          const ministries = new Set(json.items.map((item: any) => item.ministry));
+          
+          setData({
+            date: today,
+            totalItems: json.total,
+            ministryCount: ministries.size,
+            points: [],
+            topics: []
+          });
+        }
         setLoading(false);
       })
       .catch(() => setLoading(false));

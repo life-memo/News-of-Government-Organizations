@@ -37,10 +37,28 @@ export default function Calendar() {
       params.set("ministry", selectedMinistries.join(","));
     }
     try {
-      const res = await fetch(`/api/calendar?${params}`);
+      const monthStr = `${year}-${String(month).padStart(2, '0')}`;
+      const res = await fetch(`/api/calendar-json?month=${monthStr}`);
       if (res.ok) {
-        const json = await res.json();
-        setData(json);
+        const calendarData = await res.json();
+        
+        // 日付ごとのデータを変換
+        const days: CalendarDay[] = [];
+        for (const [dateKey, dayData] of Object.entries(calendarData)) {
+          if (typeof dayData === 'object' && dayData !== null && 'count' in dayData) {
+            const ministries: Record<string, number> = {};
+            for (const ministry of (dayData as any).ministries) {
+              ministries[ministry] = 1;
+            }
+            days.push({
+              date: dateKey,
+              total: (dayData as any).count,
+              ministries
+            });
+          }
+        }
+        
+        setData({ year, month, days });
       }
     } catch (e) {
       console.error("Failed to fetch calendar:", e);
