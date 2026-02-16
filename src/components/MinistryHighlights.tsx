@@ -162,7 +162,7 @@ export default function MinistryHighlights() {
     try {
       const itemsRes = await fetch(`/api/items-json?${params}`);
       const itemsData = itemsRes.ok ? await itemsRes.json() : { items: [] };
-      const summaryData = {};
+      const summaryData: { ministrySummaries?: Record<string, { points: string[] }> } = {};
 
       // 1. items を ministryKey でグルーピング
       const byKey: Record<string, Item[]> = {};

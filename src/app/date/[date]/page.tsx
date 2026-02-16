@@ -135,7 +135,7 @@ export default function DateDetailPage() {
                   <div className="flex items-start gap-3">
                     <span className="text-xs text-gray-400 mt-0.5 min-w-[3rem]">
                       {item.published_at
-                        ? formatTimeJST(item.published_at)
+                        ? formatTimeJST(new Date(item.published_at))
                         : "--:--"}
                     </span>
                     <div className="flex-1 min-w-0">
