@@ -20,7 +20,6 @@ export async function GET(request: NextRequest) {
   if (date) {
     const { start, end } = dayRangeJST(date);
     where.publishedAt = { gte: start, lte: end };
-    where.dateEstimated = false; // 日付指定時は確実な日時のみ
   } else if (from || to) {
     where.publishedAt = {};
     if (from) {
@@ -31,7 +30,6 @@ export async function GET(request: NextRequest) {
       const { end } = dayRangeJST(to);
       where.publishedAt.lte = end;
     }
-    where.dateEstimated = false; // 日付範囲指定時は確実な日時のみ
   }
 
   // Ministry filter
