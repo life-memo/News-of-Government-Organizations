@@ -1,7 +1,7 @@
 /**
  * 既存DBデータのバックフィルスクリプト
  * - URL正規化の再適用
- * - published_at の再パース（日時不明のものは削除または修正）
+ * - dateEstimated フラグの適切な設定
  * 
  * 実行: npx tsx scripts/backfill.ts
  */
@@ -51,7 +51,6 @@ async function main() {
 
   let totalProcessed = 0;
   let totalUpdated = 0;
-  let totalDeleted = 0;
 
   // 全アイテムを取得
   const allItems = await prisma.item.findMany({
@@ -73,40 +72,23 @@ async function main() {
       if (normalizedUrl && normalizedUrl !== item.url) {
         updates.url = normalizedUrl;
         needsUpdate = true;
-        console.log(`  [${item.id}] URL正規化: ${item.url} → ${normalizedUrl}`);
+        console.log(`  [${item.id}] URL正規化: ${item.url.slice(0, 50)}... → ${normalizedUrl.slice(0, 50)}...`);
       }
     }
 
-    // 2. published_at の検証
-    // - dateEstimated=true かつ publishedAt が最近すぎる（取得時刻っぽい）場合は削除候補
-    // - publishedAt が null または不正な場合も削除候補
+    // 2. dateEstimated フラグの検証
+    // - publishedAt が null の場合は削除（本来発生しないはず）
+    // - dateEstimated が未設定の場合は false に設定
     if (!item.publishedAt) {
       console.log(`  [${item.id}] published_at が null のため削除: ${item.title.slice(0, 50)}...`);
       await prisma.item.delete({ where: { id: item.id } });
-      totalDeleted++;
       continue;
     }
 
-    const pubDate = new Date(item.publishedAt);
-    if (isNaN(pubDate.getTime())) {
-      console.log(`  [${item.id}] published_at が不正のため削除: ${item.title.slice(0, 50)}...`);
-      await prisma.item.delete({ where: { id: item.id } });
-      totalDeleted++;
-      continue;
-    }
-
-    // dateEstimated=true で、published_at が未来または異常に古い場合は削除
-    if (item.dateEstimated) {
-      const now = new Date();
-      const twoYearsAgo = new Date();
-      twoYearsAgo.setFullYear(now.getFullYear() - 2);
-      
-      if (pubDate > now || pubDate < twoYearsAgo) {
-        console.log(`  [${item.id}] dateEstimated=true で日時が異常のため削除: ${pubDate.toISOString()}`);
-        await prisma.item.delete({ where: { id: item.id } });
-        totalDeleted++;
-        continue;
-      }
+    if (item.dateEstimated === null || item.dateEstimated === undefined) {
+      updates.dateEstimated = false;
+      needsUpdate = true;
+      console.log(`  [${item.id}] dateEstimated を false に設定`);
     }
 
     // 3. 更新が必要な場合のみ実行
@@ -127,7 +109,6 @@ async function main() {
   console.log("=== バックフィル完了 ===");
   console.log(`処理件数: ${totalProcessed}`);
   console.log(`更新件数: ${totalUpdated}`);
-  console.log(`削除件数: ${totalDeleted}`);
   console.log(`終了時刻: ${new Date().toISOString()}`);
 
   await prisma.$disconnect();

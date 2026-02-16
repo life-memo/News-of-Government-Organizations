@@ -36,6 +36,7 @@ export default async function DateDetailPage({ params }: PageProps) {
     items = await prisma.item.findMany({
       where: {
         publishedAt: { gte: start, lte: end },
+        dateEstimated: false, // 確実な日時のみ表示
       },
       orderBy: { publishedAt: "desc" },
     });

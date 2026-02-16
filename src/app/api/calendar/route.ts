@@ -23,6 +23,7 @@ export async function GET(request: NextRequest) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const where: any = {
     publishedAt: { gte: startJST, lte: endJST },
+    dateEstimated: false, // 日時が確実なもののみカレンダーに表示
   };
 
   if (ministryFilter) {

@@ -152,14 +152,8 @@ async function processFeed(feedUrl: string, ministry: MinistryConfig, sourceName
 
       const publishedAt = extractPublishedAt(item);
       const dateEstimated = !publishedAt;
-      // published_at が取得できない場合は null のまま保存し、fetched_at を使わない
-      const effectiveDate = publishedAt;
-
-      // published_at が null の場合はスキップ（日時不明として扱う）
-      if (!effectiveDate) {
-        console.log(`  日時不明のためスキップ: ${title.slice(0, 50)}...`);
-        continue;
-      }
+      // published_at が取得できない場合は fetched_at を使用するが、dateEstimated=true でマーク
+      const effectiveDate = publishedAt || new Date();
 
       const summaryRaw = stripHtml(item.contentSnippet || item.content || item.summary);
       const contentText = stripHtml(item["content:encoded"] || item.content);
