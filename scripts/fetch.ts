@@ -65,11 +65,23 @@ function normalizeUrl(rawUrl: string | undefined | null, baseSiteUrl: string): s
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function extractPublishedAt(entry: Record<string, any>): Date | null {
-  const candidates = [entry.isoDate, entry.pubDate, entry.published, entry.updated, entry["dc:date"], entry.date];
+  const candidates = [
+    entry.isoDate,
+    entry.pubDate,
+    entry.published,
+    entry.updated,
+    entry["dc:date"],
+    entry.date,
+    entry["atom:published"],
+    entry["atom:updated"],
+  ];
   for (const raw of candidates) {
     if (!raw || typeof raw !== "string") continue;
-    const d = new Date(raw.trim());
-    if (!isNaN(d.getTime())) return d;
+    const trimmed = raw.trim();
+    const d = new Date(trimmed);
+    if (!isNaN(d.getTime()) && d.getFullYear() > 2000 && d.getFullYear() < 2100) {
+      return d;
+    }
   }
   return null;
 }
@@ -140,7 +152,14 @@ async function processFeed(feedUrl: string, ministry: MinistryConfig, sourceName
 
       const publishedAt = extractPublishedAt(item);
       const dateEstimated = !publishedAt;
-      const effectiveDate = publishedAt || new Date();
+      // published_at が取得できない場合は null のまま保存し、fetched_at を使わない
+      const effectiveDate = publishedAt;
+
+      // published_at が null の場合はスキップ（日時不明として扱う）
+      if (!effectiveDate) {
+        console.log(`  日時不明のためスキップ: ${title.slice(0, 50)}...`);
+        continue;
+      }
 
       const summaryRaw = stripHtml(item.contentSnippet || item.content || item.summary);
       const contentText = stripHtml(item["content:encoded"] || item.content);

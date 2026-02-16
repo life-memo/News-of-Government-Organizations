@@ -101,7 +101,7 @@
     "color": "#16a34a",
     "siteUrl": "https://www.maff.go.jp",
     "sources": [
-      { "name": "RSS", "url": "https://www.maff.go.jp/rss.xml", "type": "rss" }
+      { "name": "RSS", "url": "https://www.maff.go.jp/rss.xml", "type": "rss-discovery" }
     ]
   }
 ]

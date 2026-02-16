@@ -190,9 +190,9 @@ export default async function DateDetailPage({ params }: PageProps) {
 
                     <div className="divide-y divide-gray-100">
                       {sectionItems.map((item) => {
-                        const timeStr = formatTimeJST(
-                          new Date(item.publishedAt)
-                        );
+                        const timeStr = item.publishedAt
+                          ? formatTimeJST(new Date(item.publishedAt))
+                          : "--:--";
 
                         return (
                           <div key={item.id} className="px-4 py-3">

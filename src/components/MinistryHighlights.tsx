@@ -90,7 +90,7 @@ function AccordionSection({
 
           <div className="divide-y divide-gray-100 border-t border-gray-100">
             {displayItems.map((item) => {
-              const timeStr = formatTimeJST(new Date(item.publishedAt));
+              const timeStr = item.publishedAt ? formatTimeJST(new Date(item.publishedAt)) : "--:--";
               return (
                 <div key={item.id} className="px-4 py-2.5">
                   <div className="flex items-start gap-2">
@@ -143,8 +143,9 @@ export default function MinistryHighlights() {
   const [groups, setGroups] = useState<MinistryGroup[]>([]);
   const [loading, setLoading] = useState(true);
 
-  // ministryKey → boolean（初期値空 = 全て false = 全閉）
+  // ministryKey → boolean（今日の表示では初期値を全て true に設定）
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({});
+  const [isInitialized, setIsInitialized] = useState(false);
 
   const toggle = useCallback((key: string) => {
     setOpenSections((prev) => ({ ...prev, [key]: !prev[key] }));
@@ -207,11 +208,21 @@ export default function MinistryHighlights() {
       }
 
       setGroups(result);
+
+      // 初回ロード時は全てのセクションを開いた状態にする（今日の表示のみ）
+      if (!isInitialized) {
+        const initialOpen: Record<string, boolean> = {};
+        for (const g of result) {
+          initialOpen[g.ministryKey] = true;
+        }
+        setOpenSections(initialOpen);
+        setIsInitialized(true);
+      }
     } catch (e) {
       console.error("Failed to fetch ministry highlights:", e);
     }
     setLoading(false);
-  }, [selectedMinistries]);
+  }, [selectedMinistries, isInitialized]);
 
   useEffect(() => {
     fetchData();

@@ -170,7 +170,7 @@ export default function DayPanel({ date, onClose }: DayPanelProps) {
                   </div>
 
                   {displayItems.map((item) => {
-                    const timeStr = formatTimeJST(new Date(item.publishedAt));
+                    const timeStr = item.publishedAt ? formatTimeJST(new Date(item.publishedAt)) : "--:--";
                     return (
                       <div key={item.id} className="px-4 py-2">
                         <div className="flex items-start gap-2">
