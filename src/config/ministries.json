@@ -37,10 +37,7 @@
     "color": "#ea580c",
     "siteUrl": "https://www.mlit.go.jp",
     "sources": [
-      { "name": "重要", "url": "https://www.mlit.go.jp/important.rdf", "type": "rss" },
-      { "name": "プレス", "url": "https://www.mlit.go.jp/pressrelease.rdf", "type": "rss" },
-      { "name": "新着", "url": "https://www.mlit.go.jp/index.rdf", "type": "rss" },
-      { "name": "災害", "url": "https://www.mlit.go.jp/saigai.rdf", "type": "rss" }
+      { "name": "新着", "url": "https://www.mlit.go.jp/index.rdf", "type": "rss" }
     ]
   },
   {
