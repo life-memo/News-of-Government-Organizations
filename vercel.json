@@ -1,5 +1,5 @@
 {
-  "buildCommand": "python3 scripts/fetch_rss.py && pnpm run build",
+  "buildCommand": "node scripts/fetch_rss.mjs && pnpm run build",
   "installCommand": "pnpm install",
   "framework": "nextjs",
   "regions": ["hnd1"]

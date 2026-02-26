@@ -1,0 +1,301 @@
+#!/usr/bin/env node
+/**
+ * RSS取得スクリプト (Node.js版) - Vercelビルド / GitHub Actions用
+ *
+ * 各省庁のRSSフィードを取得し public/data/items.json へマージ保存する。
+ * Python不要。Node.js >=18 の fetch API を使用。
+ */
+
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from "fs";
+import { createHash } from "crypto";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const PROJECT_ROOT = join(__dirname, "..");
+
+const MINISTRIES_PATH = join(PROJECT_ROOT, "src/config/ministries.json");
+const OUTPUT_DIR = join(PROJECT_ROOT, "public/data");
+const OUTPUT_FILE = join(OUTPUT_DIR, "items.json");
+
+/* ─── helpers ─── */
+
+function md5(str) {
+  return createHash("md5").update(str, "utf-8").digest("hex");
+}
+
+function decodeEntities(s) {
+  return s
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'");
+}
+
+function cleanText(raw) {
+  let t = raw.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1");
+  t = decodeEntities(t);
+  t = t.replace(/<[^>]*>/g, "");
+  return t.trim();
+}
+
+function resolveUrl(href, base) {
+  try {
+    return new URL(decodeEntities(href.trim()), base).toString();
+  } catch {
+    return null;
+  }
+}
+
+/** 日付文字列 → ISO string。パース不可なら null */
+function parseDate(raw) {
+  if (!raw) return null;
+  const s = raw.trim();
+  const d = new Date(s);
+  if (!isNaN(d.getTime())) return d.toISOString();
+  // ISO 8601 の +0900 形式
+  const d2 = new Date(s.replace(/([+-]\d{2})(\d{2})$/, "$1:$2"));
+  if (!isNaN(d2.getTime())) return d2.toISOString();
+  return null;
+}
+
+/* ─── fetch with timeout & retry ─── */
+
+async function fetchText(url, retries = 2) {
+  for (let i = 0; i <= retries; i++) {
+    try {
+      const res = await fetch(url, {
+        headers: { "User-Agent": "Mozilla/5.0 GovNewsBot/1.0" },
+        signal: AbortSignal.timeout(15_000),
+        redirect: "follow",
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const buf = await res.arrayBuffer();
+      // try utf-8 first
+      return new TextDecoder("utf-8").decode(buf);
+    } catch (e) {
+      if (i === retries) {
+        console.error(`  FAIL ${url}: ${e.message}`);
+        return null;
+      }
+      await new Promise((r) => setTimeout(r, 1000 * (i + 1)));
+    }
+  }
+  return null;
+}
+
+/* ─── RSS/Atom parsing ─── */
+
+function parseItems(xml) {
+  const items = [];
+
+  // RSS <item>
+  for (const m of xml.matchAll(/<item[^>]*>([\s\S]*?)<\/item>/gi)) {
+    const it = parseEntry(m[1], "rss");
+    if (it) items.push(it);
+  }
+
+  // Atom <entry>
+  if (items.length === 0) {
+    for (const m of xml.matchAll(/<entry[^>]*>([\s\S]*?)<\/entry>/gi)) {
+      const it = parseEntry(m[1], "atom");
+      if (it) items.push(it);
+    }
+  }
+
+  // RDF <item> (older format)
+  if (items.length === 0) {
+    for (const m of xml.matchAll(/<item\s[^>]*>([\s\S]*?)<\/item>/gi)) {
+      const it = parseEntry(m[1], "rss");
+      if (it) items.push(it);
+    }
+  }
+
+  return items;
+}
+
+function parseEntry(block, type) {
+  const titleM = block.match(/<title[^>]*>([\s\S]*?)<\/title>/i);
+  if (!titleM) return null;
+  const title = cleanText(titleM[1]);
+  if (!title) return null;
+
+  let link = null;
+  if (type === "atom") {
+    const m = block.match(/<link[^>]*href=["']([^"']+)["'][^>]*\/?>/i);
+    if (m) link = decodeEntities(m[1].trim());
+  } else {
+    const m = block.match(/<link[^>]*>([\s\S]*?)<\/link>/i);
+    if (m) link = cleanText(m[1]);
+  }
+  if (!link) return null;
+
+  // date
+  const dateCandidates = [
+    /<pubDate[^>]*>([\s\S]*?)<\/pubDate>/i,
+    /<dc:date[^>]*>([\s\S]*?)<\/dc:date>/i,
+    /<published[^>]*>([\s\S]*?)<\/published>/i,
+    /<updated[^>]*>([\s\S]*?)<\/updated>/i,
+  ];
+  let published_at = null;
+  let date_estimated = true;
+  for (const re of dateCandidates) {
+    const dm = block.match(re);
+    if (dm) {
+      const parsed = parseDate(dm[1].trim());
+      if (parsed) {
+        published_at = parsed;
+        date_estimated = false;
+        break;
+      }
+    }
+  }
+  if (!published_at) {
+    published_at = new Date().toISOString();
+    date_estimated = true;
+  }
+
+  return { title, url: link, published_at, date_estimated };
+}
+
+/* ─── RSS discovery (HTML → feed links) ─── */
+
+function discoverFeedUrls(html, baseUrl) {
+  const urls = new Set();
+
+  // <link rel="alternate" type="application/rss+xml" href="...">
+  for (const m of html.matchAll(/<link[^>]+>/gi)) {
+    const tag = m[0];
+    if (!/rel\s*=\s*["']alternate["']/i.test(tag)) continue;
+    if (
+      !/type\s*=\s*["']application\/(rss|atom)\+xml["']/i.test(tag) &&
+      !/type\s*=\s*["']text\/xml["']/i.test(tag)
+    )
+      continue;
+    const hrefM = tag.match(/href\s*=\s*["']([^"']+)["']/i);
+    if (hrefM) {
+      const resolved = resolveUrl(hrefM[1], baseUrl);
+      if (resolved) urls.add(resolved);
+    }
+  }
+
+  // <a href="...rdf|xml|atom">
+  for (const m of html.matchAll(/<a[^>]+href\s*=\s*["']([^"']+)["'][^>]*>/gi)) {
+    const href = m[1];
+    if (/\.(rdf|xml|atom)(\?|#|$)/i.test(href)) {
+      const resolved = resolveUrl(href, baseUrl);
+      if (resolved) urls.add(resolved);
+    }
+  }
+
+  return [...urls];
+}
+
+/* ─── main ─── */
+
+async function main() {
+  console.log("=".repeat(60));
+  console.log("RSS Feed Fetcher (Node.js)");
+  console.log("=".repeat(60));
+
+  const ministries = JSON.parse(readFileSync(MINISTRIES_PATH, "utf-8"));
+  console.log(`\nLoaded ${ministries.length} ministries`);
+
+  // 既存データ読み込み
+  let existing = {};
+  if (existsSync(OUTPUT_FILE)) {
+    try {
+      const arr = JSON.parse(readFileSync(OUTPUT_FILE, "utf-8"));
+      for (const item of arr) {
+        if (item.id) existing[item.id] = item;
+      }
+    } catch {}
+  }
+  console.log(`Existing items: ${Object.keys(existing).length}`);
+
+  const fetched = {};
+  const now = new Date().toISOString();
+
+  for (const ministry of ministries) {
+    const name = ministry.ministry;
+    const siteUrl = ministry.siteUrl || "";
+    console.log(`\n${name}`);
+    console.log("-".repeat(40));
+
+    for (const source of ministry.sources) {
+      const { name: srcName, url: srcUrl, type: srcType = "rss" } = source;
+      console.log(`  [${srcName}] Fetching... (${srcType})`);
+
+      let items = [];
+
+      if (srcType === "rss-discovery") {
+        const html = await fetchText(srcUrl);
+        if (html) {
+          const feedUrls = discoverFeedUrls(html, siteUrl);
+          console.log(`  [${srcName}] Discovered ${feedUrls.length} feed(s)`);
+          for (const feedUrl of feedUrls) {
+            const xml = await fetchText(feedUrl);
+            if (xml) {
+              const parsed = parseItems(xml);
+              console.log(`    ${feedUrl} → ${parsed.length} items`);
+              items.push(...parsed);
+            }
+          }
+        }
+      } else {
+        const xml = await fetchText(srcUrl);
+        if (xml) items = parseItems(xml);
+      }
+
+      console.log(`  [${srcName}] Found ${items.length} items`);
+
+      for (const item of items) {
+        item.url = resolveUrl(item.url, siteUrl) || item.url;
+        const hash = md5(`${item.title}${item.url}`);
+        if (fetched[hash]) continue;
+        fetched[hash] = {
+          ...item,
+          id: hash,
+          ministry: name,
+          source_name: srcName,
+          fetched_at: now,
+        };
+      }
+    }
+  }
+
+  // merge
+  const merged = { ...existing, ...fetched };
+  const all = Object.values(merged).sort(
+    (a, b) => (b.published_at || "").localeCompare(a.published_at || ""),
+  );
+
+  mkdirSync(OUTPUT_DIR, { recursive: true });
+  writeFileSync(OUTPUT_FILE, JSON.stringify(all, null, 2), "utf-8");
+
+  console.log("\n" + "=".repeat(60));
+  console.log(`New items fetched : ${Object.keys(fetched).length}`);
+  console.log(`Total items saved : ${all.length}`);
+  console.log(`Output: ${OUTPUT_FILE}`);
+  console.log("=".repeat(60));
+
+  // summary
+  const counts = {};
+  for (const item of all) {
+    const m = item.ministry || "unknown";
+    counts[m] = (counts[m] || 0) + 1;
+  }
+  console.log("\nSummary by ministry:");
+  for (const [m, c] of Object.entries(counts).sort()) {
+    console.log(`  ${m}: ${c} items`);
+  }
+}
+
+main().catch((e) => {
+  console.error("Fatal:", e);
+  // ビルドを失敗させない（既存のitems.jsonでフォールバック）
+  process.exit(0);
+});
