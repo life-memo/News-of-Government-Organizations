@@ -5,6 +5,7 @@ import { getMinistryByLabel } from "@/config/ministries";
 import { currentYearMonthJST, todayStringJST } from "@/lib/dateUtils";
 import { useFilter } from "./FilterContext";
 import DayPanel from "./DayPanel";
+import { fetchCalendarJson } from "@/lib/staticData";
 
 interface CalendarDay {
   date: string;
@@ -38,9 +39,8 @@ export default function Calendar() {
     }
     try {
       const monthStr = `${year}-${String(month).padStart(2, '0')}`;
-      const res = await fetch(`/api/calendar-json?month=${monthStr}`);
-      if (res.ok) {
-        const calendarData = await res.json();
+      {
+        const calendarData = await fetchCalendarJson(monthStr);
         
         // 日付ごとのデータを変換
         const days: CalendarDay[] = [];

@@ -92,15 +92,21 @@ async function fetchText(url, retries = 2) {
 function parseItems(xml) {
   const items = [];
 
+  // RSS 1.0 (RDF) の <channel> と <image> ブロックを除去してから解析
+  // （チャンネル画像が <item> と誤認識されるのを防ぐ）
+  const stripped = xml
+    .replace(/<channel[\s>][\s\S]*?<\/channel>/gi, "")
+    .replace(/<image[\s>][\s\S]*?<\/image>/gi, "");
+
   // RSS <item>
-  for (const m of xml.matchAll(/<item[^>]*>([\s\S]*?)<\/item>/gi)) {
+  for (const m of stripped.matchAll(/<item[^>]*>([\s\S]*?)<\/item>/gi)) {
     const it = parseEntry(m[1], "rss");
     if (it) items.push(it);
   }
 
   // Atom <entry>
   if (items.length === 0) {
-    for (const m of xml.matchAll(/<entry[^>]*>([\s\S]*?)<\/entry>/gi)) {
+    for (const m of stripped.matchAll(/<entry[^>]*>([\s\S]*?)<\/entry>/gi)) {
       const it = parseEntry(m[1], "atom");
       if (it) items.push(it);
     }
@@ -108,7 +114,7 @@ function parseItems(xml) {
 
   // RDF <item> (older format)
   if (items.length === 0) {
-    for (const m of xml.matchAll(/<item\s[^>]*>([\s\S]*?)<\/item>/gi)) {
+    for (const m of stripped.matchAll(/<item\s[^>]*>([\s\S]*?)<\/item>/gi)) {
       const it = parseEntry(m[1], "rss");
       if (it) items.push(it);
     }
@@ -254,6 +260,14 @@ async function main() {
 
       for (const item of items) {
         item.url = resolveUrl(item.url, siteUrl) || item.url;
+
+        // ホームページ直リンク・画像URLはゴミアイテムとしてスキップ
+        try {
+          const u = new URL(item.url);
+          if (u.pathname === "/" || u.pathname === "") continue;
+          if (/\.(gif|jpg|jpeg|png|svg|webp|ico)(\?|#|$)/i.test(u.pathname)) continue;
+        } catch { continue; }
+
         const hash = md5(`${item.title}${item.url}`);
         if (fetched[hash]) continue;
         fetched[hash] = {
@@ -267,11 +281,17 @@ async function main() {
     }
   }
 
-  // merge
+  // merge（90日以上前のアイテムは除外）
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - 90);
+  const cutoffStr = cutoff.toISOString();
+
   const merged = { ...existing, ...fetched };
-  const all = Object.values(merged).sort(
-    (a, b) => (b.published_at || "").localeCompare(a.published_at || ""),
-  );
+  const all = Object.values(merged)
+    .filter((item) => !item.date_estimated && (item.published_at || "") >= cutoffStr)
+    .sort(
+      (a, b) => (b.published_at || "").localeCompare(a.published_at || ""),
+    );
 
   mkdirSync(OUTPUT_DIR, { recursive: true });
   writeFileSync(OUTPUT_FILE, JSON.stringify(all, null, 2), "utf-8");
