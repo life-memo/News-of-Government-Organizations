@@ -37,7 +37,10 @@
     "color": "#ea580c",
     "siteUrl": "https://www.mlit.go.jp",
     "sources": [
-      { "name": "新着", "url": "https://www.mlit.go.jp/index.rdf", "type": "rss", "encoding": "shift_jis" }
+      { "name": "新着", "url": "https://www.mlit.go.jp/index.rdf", "type": "rss", "encoding": "shift_jis" },
+      { "name": "プレスリリース", "url": "https://www.mlit.go.jp/pressrelease.rdf", "type": "rss", "encoding": "shift_jis" },
+      { "name": "重要なお知らせ", "url": "https://www.mlit.go.jp/important.rdf", "type": "rss", "encoding": "shift_jis" },
+      { "name": "トピックス", "url": "https://www.mlit.go.jp/topics.rdf", "type": "rss", "encoding": "shift_jis" }
     ]
   },
   {
