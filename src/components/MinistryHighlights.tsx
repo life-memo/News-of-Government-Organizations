@@ -9,6 +9,7 @@ import {
 } from "@/config/ministries";
 import { todayStringJST, extractTopics } from "@/lib/dateUtils";
 import { useFilter } from "./FilterContext";
+import { fetchItemsJson } from "@/lib/staticData";
 
 interface Item {
   id: string;
@@ -138,14 +139,13 @@ export default function MinistryHighlights() {
   const fetchData = useCallback(async () => {
     setLoading(true);
     const today = todayStringJST();
-    const params = new URLSearchParams({ date: today, limit: "200" });
-    if (selectedMinistries.length > 0) {
-      params.set("ministry", selectedMinistries.join(","));
-    }
 
     try {
-      const itemsRes = await fetch(`/api/items-json?${params}`);
-      const itemsData = itemsRes.ok ? await itemsRes.json() : { items: [] };
+      const itemsData = await fetchItemsJson({
+        date: today,
+        limit: 200,
+        ministry: selectedMinistries.length > 0 ? selectedMinistries.join(",") : undefined,
+      });
 
       const byKey: Record<string, Item[]> = {};
       for (const item of itemsData.items || []) {

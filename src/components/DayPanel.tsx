@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { formatDateDisplay, formatTimeJST } from "@/lib/dateUtils";
 import { labelToKey, getMinistryByLabel, type MinistryDef } from "@/config/ministries";
+import { fetchItemsJson } from "@/lib/staticData";
 
 interface Item {
   id: string;
@@ -38,10 +39,9 @@ export default function DayPanel({ date, onClose }: DayPanelProps) {
     setLoading(true);
     setShowCount({});
 
-    fetch(`/api/items-json?date=${date}&limit=200`)
-      .then((r) => r.ok ? r.json() : { items: [] })
+    fetchItemsJson({ date, limit: 200 })
       .then((itemsData) => {
-        setItems(itemsData?.items || []);
+        setItems((itemsData?.items ?? []) as unknown as Item[]);
         setSummary(null);
         setLoading(false);
       })

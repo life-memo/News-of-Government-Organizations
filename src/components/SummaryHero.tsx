@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { todayStringJST, formatDateDisplay } from "@/lib/dateUtils";
+import { fetchItemsJson } from "@/lib/staticData";
 
 interface SummaryData {
   date: string;
@@ -17,12 +18,7 @@ export default function SummaryHero() {
 
   useEffect(() => {
     const today = todayStringJST();
-    // JSONファイルから今日のデータを取得
-    fetch(`/api/items-json?date=${today}`)
-      .then((r) => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`);
-        return r.json();
-      })
+    fetchItemsJson({ date: today })
       .then((json) => {
         if (json && json.items) {
           // 省庁ごとにグループ化
