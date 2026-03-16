@@ -74,8 +74,25 @@ async function fetchText(url, retries = 2) {
       });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const buf = await res.arrayBuffer();
-      // try utf-8 first
-      return new TextDecoder("utf-8").decode(buf);
+
+      // Detect encoding from XML declaration (<?xml ... encoding="Shift_JIS"?>)
+      // Read first 256 bytes as latin1 to safely extract ASCII encoding declaration
+      const head = new TextDecoder("latin1").decode(new Uint8Array(buf).slice(0, 256));
+      const encMatch = head.match(/encoding\s*=\s*["']([^"']+)["']/i);
+      const declaredEnc = encMatch ? encMatch[1].toLowerCase() : "utf-8";
+
+      if (declaredEnc === "utf-8" || declaredEnc === "utf8") {
+        return new TextDecoder("utf-8").decode(buf);
+      }
+
+      // Handle Shift-JIS and EUC-JP (common for older Japanese government sites)
+      try {
+        const decoder = new TextDecoder(declaredEnc);
+        return decoder.decode(buf);
+      } catch {
+        // Fallback to UTF-8 if encoding is unsupported
+        return new TextDecoder("utf-8").decode(buf);
+      }
     } catch (e) {
       if (i === retries) {
         console.error(`  FAIL ${url}: ${e.message}`);
