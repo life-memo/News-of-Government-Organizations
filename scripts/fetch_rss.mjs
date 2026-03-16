@@ -322,7 +322,19 @@ async function main() {
   const cutoffStr = cutoff.toISOString();
 
   const merged = { ...existing, ...fetched };
-  const all = Object.values(merged)
+
+  // URL-based deduplication: keep the most recently fetched item per URL
+  // This handles the case where old items have md5(title+url) IDs and new ones have md5(url) IDs
+  const byUrl = new Map();
+  for (const item of Object.values(merged)) {
+    const url = item.url;
+    const existing_for_url = byUrl.get(url);
+    if (!existing_for_url || (item.fetched_at || "") >= (existing_for_url.fetched_at || "")) {
+      byUrl.set(url, item);
+    }
+  }
+
+  const all = Array.from(byUrl.values())
     .filter((item) => !item.date_estimated && (item.published_at || "") >= cutoffStr)
     .sort(
       (a, b) => (b.published_at || "").localeCompare(a.published_at || ""),
