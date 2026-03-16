@@ -37,10 +37,7 @@
     "color": "#ea580c",
     "siteUrl": "https://www.mlit.go.jp",
     "sources": [
-      { "name": "重要", "url": "https://www.mlit.go.jp/important.rdf", "type": "rss" },
-      { "name": "プレス", "url": "https://www.mlit.go.jp/pressrelease.rdf", "type": "rss" },
-      { "name": "新着", "url": "https://www.mlit.go.jp/index.rdf", "type": "rss" },
-      { "name": "災害", "url": "https://www.mlit.go.jp/saigai.rdf", "type": "rss" }
+      { "name": "新着", "url": "https://www.mlit.go.jp/index.rdf", "type": "rss" }
     ]
   },
   {
@@ -102,6 +99,36 @@
     "siteUrl": "https://www.maff.go.jp",
     "sources": [
       { "name": "RSS", "url": "https://www.maff.go.jp/rss.xml", "type": "rss-discovery" }
+    ]
+  },
+  {
+    "key": "MOF",
+    "ministry": "財務省",
+    "short": "財務",
+    "color": "#0f766e",
+    "siteUrl": "https://www.mof.go.jp",
+    "sources": [
+      { "name": "新着", "url": "https://www.mof.go.jp/rss/index.xml", "type": "rss" }
+    ]
+  },
+  {
+    "key": "MOE",
+    "ministry": "環境省",
+    "short": "環境",
+    "color": "#15803d",
+    "siteUrl": "https://www.env.go.jp",
+    "sources": [
+      { "name": "新着", "url": "https://www.env.go.jp/rss/index.xml", "type": "rss" }
+    ]
+  },
+  {
+    "key": "DA",
+    "ministry": "デジタル庁",
+    "short": "デジタル",
+    "color": "#6366f1",
+    "siteUrl": "https://www.digital.go.jp",
+    "sources": [
+      { "name": "新着", "url": "https://www.digital.go.jp/feed/", "type": "rss" }
     ]
   }
 ]

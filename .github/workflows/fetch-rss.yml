@@ -17,13 +17,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: '3.11'
+          node-version: '20'
 
       - name: Fetch RSS feeds
-        run: python3 scripts/fetch_rss.py
+        run: node scripts/fetch_rss.mjs
 
       - name: Commit and push if changed
         run: |
