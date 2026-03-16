@@ -64,7 +64,7 @@ function parseDate(raw) {
 
 /* ─── fetch with timeout & retry ─── */
 
-async function fetchText(url, retries = 2) {
+async function fetchText(url, forcedEncoding = null, retries = 2) {
   for (let i = 0; i <= retries; i++) {
     try {
       const res = await fetch(url, {
@@ -75,24 +75,41 @@ async function fetchText(url, retries = 2) {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const buf = await res.arrayBuffer();
 
-      // Detect encoding from XML declaration (<?xml ... encoding="Shift_JIS"?>)
-      // Read first 256 bytes as latin1 to safely extract ASCII encoding declaration
-      const head = new TextDecoder("latin1").decode(new Uint8Array(buf).slice(0, 256));
+      // 1. Use forced encoding from source config if provided
+      if (forcedEncoding) {
+        try {
+          return new TextDecoder(forcedEncoding).decode(buf);
+        } catch {
+          // fall through to auto-detection
+        }
+      }
+
+      // 2. Check HTTP Content-Type header for charset
+      const ct = res.headers.get("content-type") || "";
+      const ctMatch = ct.match(/charset\s*=\s*([^\s;]+)/i);
+      if (ctMatch) {
+        const ctEnc = ctMatch[1].toLowerCase().replace(/^["']|["']$/g, "");
+        if (ctEnc !== "utf-8" && ctEnc !== "utf8") {
+          try {
+            return new TextDecoder(ctEnc).decode(buf);
+          } catch { /* fall through */ }
+        }
+      }
+
+      // 3. Detect encoding from XML declaration (<?xml ... encoding="Shift_JIS"?>)
+      const head = new TextDecoder("latin1").decode(new Uint8Array(buf).slice(0, 512));
       const encMatch = head.match(/encoding\s*=\s*["']([^"']+)["']/i);
-      const declaredEnc = encMatch ? encMatch[1].toLowerCase() : "utf-8";
-
-      if (declaredEnc === "utf-8" || declaredEnc === "utf8") {
-        return new TextDecoder("utf-8").decode(buf);
+      if (encMatch) {
+        const declaredEnc = encMatch[1].toLowerCase();
+        if (declaredEnc !== "utf-8" && declaredEnc !== "utf8") {
+          try {
+            return new TextDecoder(declaredEnc).decode(buf);
+          } catch { /* fall through */ }
+        }
       }
 
-      // Handle Shift-JIS and EUC-JP (common for older Japanese government sites)
-      try {
-        const decoder = new TextDecoder(declaredEnc);
-        return decoder.decode(buf);
-      } catch {
-        // Fallback to UTF-8 if encoding is unsupported
-        return new TextDecoder("utf-8").decode(buf);
-      }
+      // 4. Default: UTF-8
+      return new TextDecoder("utf-8").decode(buf);
     } catch (e) {
       if (i === retries) {
         console.error(`  FAIL ${url}: ${e.message}`);
@@ -249,18 +266,18 @@ async function main() {
     console.log("-".repeat(40));
 
     for (const source of ministry.sources) {
-      const { name: srcName, url: srcUrl, type: srcType = "rss" } = source;
-      console.log(`  [${srcName}] Fetching... (${srcType})`);
+      const { name: srcName, url: srcUrl, type: srcType = "rss", encoding: srcEncoding = null } = source;
+      console.log(`  [${srcName}] Fetching... (${srcType}${srcEncoding ? ", " + srcEncoding : ""})`);
 
       let items = [];
 
       if (srcType === "rss-discovery") {
-        const html = await fetchText(srcUrl);
+        const html = await fetchText(srcUrl, srcEncoding);
         if (html) {
           const feedUrls = discoverFeedUrls(html, siteUrl);
           console.log(`  [${srcName}] Discovered ${feedUrls.length} feed(s)`);
           for (const feedUrl of feedUrls) {
-            const xml = await fetchText(feedUrl);
+            const xml = await fetchText(feedUrl, srcEncoding);
             if (xml) {
               const parsed = parseItems(xml);
               console.log(`    ${feedUrl} → ${parsed.length} items`);
@@ -269,7 +286,7 @@ async function main() {
           }
         }
       } else {
-        const xml = await fetchText(srcUrl);
+        const xml = await fetchText(srcUrl, srcEncoding);
         if (xml) items = parseItems(xml);
       }
 
@@ -285,7 +302,8 @@ async function main() {
           if (/\.(gif|jpg|jpeg|png|svg|webp|ico)(\?|#|$)/i.test(u.pathname)) continue;
         } catch { continue; }
 
-        const hash = md5(`${item.title}${item.url}`);
+        // URL のみで重複排除（タイトルが変化しても同一記事として扱い、再取得で上書き可能にする）
+        const hash = md5(item.url);
         if (fetched[hash]) continue;
         fetched[hash] = {
           ...item,

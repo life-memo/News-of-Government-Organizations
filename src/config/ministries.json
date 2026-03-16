@@ -37,7 +37,7 @@
     "color": "#ea580c",
     "siteUrl": "https://www.mlit.go.jp",
     "sources": [
-      { "name": "新着", "url": "https://www.mlit.go.jp/index.rdf", "type": "rss" }
+      { "name": "新着", "url": "https://www.mlit.go.jp/index.rdf", "type": "rss", "encoding": "shift_jis" }
     ]
   },
   {
@@ -68,7 +68,7 @@
     "color": "#4f46e5",
     "siteUrl": "https://www.soumu.go.jp",
     "sources": [
-      { "name": "新着", "url": "https://www.soumu.go.jp/news.rdf", "type": "rss" }
+      { "name": "新着", "url": "https://www.soumu.go.jp/news.rdf", "type": "rss", "encoding": "shift_jis" }
     ]
   },
   {
