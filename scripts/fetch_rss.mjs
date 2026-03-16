@@ -267,11 +267,17 @@ async function main() {
     }
   }
 
-  // merge
+  // merge（90日以上前のアイテムは除外）
+  const cutoff = new Date();
+  cutoff.setDate(cutoff.getDate() - 90);
+  const cutoffStr = cutoff.toISOString();
+
   const merged = { ...existing, ...fetched };
-  const all = Object.values(merged).sort(
-    (a, b) => (b.published_at || "").localeCompare(a.published_at || ""),
-  );
+  const all = Object.values(merged)
+    .filter((item) => !item.date_estimated && (item.published_at || "") >= cutoffStr)
+    .sort(
+      (a, b) => (b.published_at || "").localeCompare(a.published_at || ""),
+    );
 
   mkdirSync(OUTPUT_DIR, { recursive: true });
   writeFileSync(OUTPUT_FILE, JSON.stringify(all, null, 2), "utf-8");
