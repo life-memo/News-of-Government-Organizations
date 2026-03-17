@@ -22,6 +22,9 @@ export const MINISTRIES: MinistryDef[] = [
   { key: "MHLW", label: "厚生労働省", shortLabel: "厚労", color: "#be185d" },
   { key: "MEXT", label: "文部科学省", shortLabel: "文科", color: "#ca8a04" },
   { key: "MAFF", label: "農林水産省", shortLabel: "農水", color: "#16a34a" },
+  { key: "MOF",  label: "財務省",     shortLabel: "財務", color: "#0f766e" },
+  { key: "MOE",  label: "環境省",     shortLabel: "環境", color: "#15803d" },
+  { key: "DA",   label: "デジタル庁", shortLabel: "デジ", color: "#6366f1" },
 ];
 
 /** label → MinistryDef */
