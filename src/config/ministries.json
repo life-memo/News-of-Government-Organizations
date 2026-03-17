@@ -27,7 +27,9 @@
     "color": "#dc2626",
     "siteUrl": "https://www.meti.go.jp",
     "sources": [
-      { "name": "ニュースリリース", "url": "https://www.meti.go.jp/ml_index_release_atom.xml", "type": "atom" }
+      { "name": "RSS一覧", "url": "https://www.meti.go.jp/rss/", "type": "rss-discovery" },
+      { "name": "ニュースリリース(atom)", "url": "https://www.meti.go.jp/ml_index_release_atom.xml", "type": "atom" },
+      { "name": "新着(rdf)", "url": "https://www.meti.go.jp/rss/whatsnew.rdf", "type": "rss" }
     ]
   },
   {
@@ -50,7 +52,10 @@
     "color": "#059669",
     "siteUrl": "https://www.mod.go.jp",
     "sources": [
-      { "name": "新着", "url": "https://www.mod.go.jp/j/rss/news.xml", "type": "rss" }
+      { "name": "新着", "url": "https://www.mod.go.jp/j/rss/news.xml", "type": "rss" },
+      { "name": "RSS一覧", "url": "https://www.mod.go.jp/j/rss/index.html", "type": "rss-discovery" },
+      { "name": "プレスリリース", "url": "https://www.mod.go.jp/j/rss/press.xml", "type": "rss" },
+      { "name": "トピックス", "url": "https://www.mod.go.jp/j/rss/topics.xml", "type": "rss" }
     ]
   },
   {
@@ -102,7 +107,9 @@
     "color": "#16a34a",
     "siteUrl": "https://www.maff.go.jp",
     "sources": [
-      { "name": "プレスリリース", "url": "https://www.maff.go.jp/j/press/rss.xml", "type": "rss" }
+      { "name": "プレスリリース", "url": "https://www.maff.go.jp/j/press/rss.xml", "type": "rss" },
+      { "name": "RSS一覧", "url": "https://www.maff.go.jp/", "type": "rss-discovery" },
+      { "name": "水産庁", "url": "https://www.jfa.maff.go.jp/j/press/", "type": "rss-discovery" }
     ]
   },
   {
