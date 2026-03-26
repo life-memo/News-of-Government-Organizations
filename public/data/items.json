@@ -1,5 +1,225 @@
 [
   {
+    "title": "資格・試験情報",
+    "url": "https://www.mhlw.go.jp/kouseiroudoushou/shikaku_shiken/index.html",
+    "published_at": "2026-03-26T01:00:00.000Z",
+    "date_estimated": false,
+    "id": "1336a7e416a971a62b063336f0230ef7",
+    "ministry": "厚生労働省",
+    "source_name": "新着",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "第３回 小児がん拠点病院等の指定要件に関するワーキンググループ（資料）",
+    "url": "https://www.mhlw.go.jp/stf/newpage_71942.html",
+    "published_at": "2026-03-26T01:00:00.000Z",
+    "date_estimated": false,
+    "id": "c0d9286441feaf43f0288a89a6f5c947",
+    "ministry": "厚生労働省",
+    "source_name": "新着",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "情報通信行政・郵政行政審議会　郵政行政分科会（第103回）配布資料・議事概要・議事録",
+    "url": "https://www.soumu.go.jp/main_sosiki/joho_tsusin/policyreports/joho_tsusin/yusei/yusei_gyousei/02ryutsu01_04000500.html",
+    "published_at": "2026-03-25T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "01ed8716d9958076937b2c9ce096b778",
+    "ministry": "総務省",
+    "source_name": "新着",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "第７回　医療機能情報提供制度・医療広告等に関する分科会　資料",
+    "url": "https://www.mhlw.go.jp/stf/newpage_72001.html",
+    "published_at": "2026-03-25T08:22:00.000Z",
+    "date_estimated": false,
+    "id": "e99b5f88cf8f2460812ce461acae8a02",
+    "ministry": "厚生労働省",
+    "source_name": "新着",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "第484回消費者委員会本会議【3月24日開催】",
+    "url": "https://www.cao.go.jp/consumer/iinkai/2026/484/shiryou/index.html",
+    "published_at": "2026-03-25T07:04:00.000Z",
+    "date_estimated": false,
+    "id": "51cd77e3ae103ee550d76f256e19c386",
+    "ministry": "内閣府",
+    "source_name": "新着",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "第４３回がん検診のあり方に関する検討会（資料）",
+    "url": "https://www.mhlw.go.jp/stf/newpage_71994.html",
+    "published_at": "2026-03-25T06:40:00.000Z",
+    "date_estimated": false,
+    "id": "a264c53b7713f881acd900cade46c36d",
+    "ministry": "厚生労働省",
+    "source_name": "新着",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "第5回 世界で競い成長する大学経営のあり方に関する研究会",
+    "url": "https://www.mext.go.jp/a_menu/kagaku/platform/1387974_00006.htm",
+    "published_at": "2026-03-25T06:30:00.000Z",
+    "date_estimated": false,
+    "id": "5a1d6e9ffa73c3d1761a9b87a24e1123",
+    "ministry": "文部科学省",
+    "source_name": "RSS一覧",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "「学校給食衛生管理基準」の在り方に関する有識者会議(第1回)配布資料",
+    "url": "https://www.mext.go.jp/b_menu/shingi/chousa/shotou/giji_list/mext_00006.html",
+    "published_at": "2026-03-25T06:30:00.000Z",
+    "date_estimated": false,
+    "id": "09ee7acec15201e1185e6eb1b5d06dae",
+    "ministry": "文部科学省",
+    "source_name": "RSS一覧",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "「人口動態統計速報」令和８（2026）年01月分",
+    "url": "https://www.mhlw.go.jp/toukei/saikin/hw/jinkou/geppo/s2026/01.html",
+    "published_at": "2026-03-25T06:00:00.000Z",
+    "date_estimated": false,
+    "id": "aedd8912d52f3fd2bc56b42028367ff7",
+    "ministry": "厚生労働省",
+    "source_name": "新着",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "次世代HPCI環境検討ワーキンググループ（第5回）議事要旨",
+    "url": "https://www.mext.go.jp/b_menu/shingi/chousa/shinkou/076/gijiroku/mext_00003.html",
+    "published_at": "2026-03-25T06:00:00.000Z",
+    "date_estimated": false,
+    "id": "1de898144f29e206d6faf5d433f06e96",
+    "ministry": "文部科学省",
+    "source_name": "RSS一覧",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "第4回 世界で競い成長する大学経営のあり方に関する研究会",
+    "url": "https://www.mext.go.jp/a_menu/kagaku/platform/1387974_00004.htm",
+    "published_at": "2026-03-25T06:00:00.000Z",
+    "date_estimated": false,
+    "id": "f2c6653fead658a56108f5ad50a9a45d",
+    "ministry": "文部科学省",
+    "source_name": "RSS一覧",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "国家試験合格発表",
+    "url": "https://www.mhlw.go.jp/kouseiroudoushou/shikaku_shiken/goukaku.html",
+    "published_at": "2026-03-25T05:00:00.000Z",
+    "date_estimated": false,
+    "id": "12d0fb3bf133feb2885e4391834b5571",
+    "ministry": "厚生労働省",
+    "source_name": "新着",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "「医療機器等における情報化進捗状況調査」の結果公表",
+    "url": "https://www.mhlw.go.jp/stf/newpage_71894.html",
+    "published_at": "2026-03-25T05:00:00.000Z",
+    "date_estimated": false,
+    "id": "bd6e2c04731a6494ce58ccc5c5b59880",
+    "ministry": "厚生労働省",
+    "source_name": "新着",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "「医療用医薬品における情報化進捗状況調査」の結果公表",
+    "url": "https://www.mhlw.go.jp/stf/newpage_71887.html",
+    "published_at": "2026-03-25T05:00:00.000Z",
+    "date_estimated": false,
+    "id": "0e74bec0ddcf909cbad4b470d62c33e8",
+    "ministry": "厚生労働省",
+    "source_name": "新着",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "令和8年度スーパーサイエンスハイスクール(SSH)指定校の内定等について",
+    "url": "https://www.mext.go.jp/a_menu/jinzai/gakkou/mext_00006.html",
+    "published_at": "2026-03-25T05:00:00.000Z",
+    "date_estimated": false,
+    "id": "f0360b9eaf3567b8ea967434c6483fdd",
+    "ministry": "文部科学省",
+    "source_name": "RSS一覧",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "いじめ防止対策協議会（令和7年度）（第1回）の開催について",
+    "url": "https://www.mext.go.jp/b_menu/shingi/chousa/shotou/198/kaisai/1422183_00003.htm",
+    "published_at": "2026-03-25T05:00:00.000Z",
+    "date_estimated": false,
+    "id": "2c681cbb1172cfab3444dc11cdeedbea",
+    "ministry": "文部科学省",
+    "source_name": "RSS一覧",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "認定日本語教育機関の認定申請等の手引きを更新しました",
+    "url": "https://www.mext.go.jp/a_menu/nihongo_kyoiku/1246441_00009.html",
+    "published_at": "2026-03-25T05:00:00.000Z",
+    "date_estimated": false,
+    "id": "6678cfdd4a644a4e84b0af8a4c8b6c79",
+    "ministry": "文部科学省",
+    "source_name": "RSS一覧",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "給食費負担軽減交付金交付要綱・実施要領",
+    "url": "https://www.mext.go.jp/a_menu/sports/syokuiku/mext_00008.html",
+    "published_at": "2026-03-25T04:47:00.000Z",
+    "date_estimated": false,
+    "id": "330b31ec50c9b47890db976d46a2754d",
+    "ministry": "文部科学省",
+    "source_name": "RSS一覧",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "第40回 医療ニーズの高い医療機器等の早期導入に関する検討会を開催します",
+    "url": "https://www.mhlw.go.jp/stf/newpage_71986.html",
+    "published_at": "2026-03-25T04:40:00.000Z",
+    "date_estimated": false,
+    "id": "f9b0cd37cfb474668ee3fb19f8fb516d",
+    "ministry": "厚生労働省",
+    "source_name": "新着",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "景気動向指数（令和8年1月分速報からの改訂状況）",
+    "url": "https://www.esri.cao.go.jp/jp/stat/di/di.html",
+    "published_at": "2026-03-25T04:37:00.000Z",
+    "date_estimated": false,
+    "id": "0124c916bce886186be783910f3c5c4e",
+    "ministry": "内閣府",
+    "source_name": "新着",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "法務大臣閣議後記者会見の概要－令和８年３月２４日（火）",
+    "url": "http://www.moj.go.jp/hisho/kouhou/hisho08_00705.html",
+    "published_at": "2026-03-25T04:18:00.000Z",
+    "date_estimated": false,
+    "id": "e683fe82004a33d34c8a0b1da3600213",
+    "ministry": "法務省",
+    "source_name": "お知らせ",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "自分らしく生きるための「人生会議」ポータルサイト",
+    "url": "https://www.mhlw.go.jp/acp-jinseikaigi/",
+    "published_at": "2026-03-25T03:00:00.000Z",
+    "date_estimated": false,
+    "id": "a3af082045992bcb7b65341274d2e7bd",
+    "ministry": "厚生労働省",
+    "source_name": "新着",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
     "title": "公益事業に関する争議行為の予告公表ページについて更新されました",
     "url": "https://www.mhlw.go.jp/seisakunitsuite/bunya/koyou_roudou/roudouseisaku/sougikoui/index.html",
     "published_at": "2026-03-25T01:00:00.000Z",
@@ -7,7 +227,7 @@
     "id": "3444ec6a69ea6abba8aa6d55d89f001f",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "令和８年１月分月報公表（訟務事件統計、登記統計、検察統計、矯正統計、少年矯正統計、保護統計及び人権侵犯事件統計）",
@@ -17,7 +237,7 @@
     "id": "3d0ebaf7aa3109600e2a1e7ae92cb942",
     "ministry": "法務省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "高等学校教育の振興に関する懇談会(第3回)の配付資料を追加しました",
@@ -27,7 +247,7 @@
     "id": "0811c827bf1078f353b0614857bfa9b9",
     "ministry": "文部科学省",
     "source_name": "RSS一覧",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "一般職技術系（情報通信行政）の情報を更新しました",
@@ -37,7 +257,7 @@
     "id": "e740eb9444653f144483fd93056f0cbb",
     "ministry": "総務省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "利用者情報に関するワーキンググループ（第37回）",
@@ -47,7 +267,247 @@
     "id": "06b6e57d004f3da985dd31da20c30e7b",
     "ministry": "総務省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "鉄道輸送統計月報（概要）（令和7年（2025年）12月分）",
+    "url": "http://www.mlit.go.jp/report/press/joho05_hh_000893.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "65855a8fb7eaf894cbbb4dbcb4216bd3",
+    "ministry": "国土交通省",
+    "source_name": "プレスリリース",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "知的・精神・発達障害などの特性がある方の公共交通機関（鉄道・ バス）の利用支援となる利用体験の手引きを作成いたしました",
+    "url": "http://www.mlit.go.jp/report/press/sogo09_hh_000430.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "aac9b38608a7ff6803c2fea9c4eb9705",
+    "ministry": "国土交通省",
+    "source_name": "プレスリリース",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "令和８年度「地方応援隊」取組対象市町村を公募！～市町村における課題解決を霞が関の若手職員が支援します～",
+    "url": "http://www.mlit.go.jp/report/press/kokudoseisaku01_hh_000235.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "712947e96603527506be7d22d90f7531",
+    "ministry": "国土交通省",
+    "source_name": "プレスリリース",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "第１回土地の取得・利用等の在り方に関する有識者会議を開催します～土地の取得・利用等の在り方について幅広く検討～",
+    "url": "http://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo02_hh_000001_00107.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "2a3139b4acd0071b3f40f588c1d7bb0f",
+    "ministry": "国土交通省",
+    "source_name": "プレスリリース",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "建設キャリアアップシステム運営協議会総会の開催について～次年度の事業計画等について討議します～",
+    "url": "http://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo14_hh_000001_00347.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "3dbe0fa4722ac78cda1fd329fb1ce2d4",
+    "ministry": "国土交通省",
+    "source_name": "プレスリリース",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "建設労働需給調査結果（令和８年２月分調査）について",
+    "url": "http://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo14_hh_000001_00344.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "01e5d31a40e1458680f6724c78abbdf5",
+    "ministry": "国土交通省",
+    "source_name": "プレスリリース",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "「ジオAI研究会」（第2回）を開催します～第１回研究会を踏まえた課題・論点の整理などを議論します～",
+    "url": "http://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo17_hh_000001_00079.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "7fefbf9d8a4f6cf93613a29396599643",
+    "ministry": "国土交通省",
+    "source_name": "プレスリリース",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "3月の主要建設資材の需給動向は全ての調査対象資材において均衡～主要建設資材需給・価格動向調査（令和8年3月1～5日現在）の結果～",
+    "url": "http://www.mlit.go.jp/report/press/tochi_fudousan_kensetsugyo14_hh_000001_00342.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "b65a21163262b95d8a4d1715a74f46bf",
+    "ministry": "国土交通省",
+    "source_name": "プレスリリース",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "バスタプロジェクト推進のための新たな検討事項を議論します！～第８回バスタプロジェクト推進検討会を開催～",
+    "url": "http://www.mlit.go.jp/report/press/road01_hh_002076.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "6f615b1bec059f47ee8470d837213309",
+    "ministry": "国土交通省",
+    "source_name": "プレスリリース",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "「道の駅」第３ステージの具体化に向けた議論～第14 回「道の駅」第３ステージ推進委員会を開催～",
+    "url": "http://www.mlit.go.jp/report/press/road01_hh_002074.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "244f1a325b365ee4cad9835f0134bb5a",
+    "ministry": "国土交通省",
+    "source_name": "プレスリリース",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "鉄道技術開発・普及促進制度における新規技術開発課題が決定しました～鉄道分野における自動運転の導入推進に向けた技術開発を推進～",
+    "url": "http://www.mlit.go.jp/report/press/tetsudo07_hh_000324.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "23e545e520a9a4826a8d551ed5be6ae7",
+    "ministry": "国土交通省",
+    "source_name": "プレスリリース",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "リコールの届出について（三菱　V575A　他）",
+    "url": "http://www.mlit.go.jp/report/press/jidosha08_hh_005696.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "39037dd5e891a17f42ef41357330bfbf",
+    "ministry": "国土交通省",
+    "source_name": "プレスリリース",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "第１回「空港DX技術実装推進会議」を開催します～官民関係者による空港DX技術の本格実装化に向けた行動計画を策定します～",
+    "url": "http://www.mlit.go.jp/report/press/kouku05_hh_000241.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "691514b79f1c60d3c32d094b95a28d51",
+    "ministry": "国土交通省",
+    "source_name": "プレスリリース",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "ボーイング式737-8型に対する型式証明",
+    "url": "http://www.mlit.go.jp/report/press/kouku11_hh_000134.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "0db4446dcde149f829533583fcdda824",
+    "ministry": "国土交通省",
+    "source_name": "プレスリリース",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "JOINの経営改善に向けた取組状況のフォローアップを行いました～「海外交通・都市開発事業支援機構（JOIN）の役割、在り方、経営改善策等に関する有識者委員会」第２回フォローアップ会合の開催～",
+    "url": "http://www.mlit.go.jp/report/press/sogo05_hh_000406.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "66a5c3c3aa928f583fdb195cdeb51df6",
+    "ministry": "国土交通省",
+    "source_name": "プレスリリース",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "情報通信審議会　情報通信技術分科会　衛星通信システム委員会（第51回）",
+    "url": "https://www.soumu.go.jp/main_sosiki/joho_tsusin/policyreports/joho_tsusin/kaisai/02kiban15_04000595.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "a70e444f9841322511701a9350c40a4c",
+    "ministry": "総務省",
+    "source_name": "新着",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "第20回自治体国際交流表彰（総務大臣賞）",
+    "url": "https://www.soumu.go.jp/menu_news/s-news/20daizinnhyousyou.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "5f25510c179e365eb6b4586862822f3f",
+    "ministry": "総務省",
+    "source_name": "新着",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "地方公共団体情報システムの標準化に関する法律第二条第一項に規定する標準化対象事務を定める政令に規定するデジタル庁令・総務省令で定める事務を定める命令第五条各号に規定する事務の処理に係るシステムに必要とされる機能等に関する標準化基準を定める省令（案）等に対する意見募集の結果",
+    "url": "https://www.soumu.go.jp/menu_news/s-news/01gyosei15_02000484.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "19fbab0ba713c3699e111c7b2f56c102",
+    "ministry": "総務省",
+    "source_name": "新着",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "非常勤消防団員等に係る損害補償の基準を定める政令の一部を改正する政令案に対する意見募集",
+    "url": "https://www.soumu.go.jp/menu_news/s-news/01shoubo01_02001187.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "04847d249677c678f7602fd8cf4bde28",
+    "ministry": "総務省",
+    "source_name": "新着",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "地方公共団体情報システムの標準化に関する法律第二条第一項に規定する標準化対象事務を定める政令に規定するデジタル庁令・総務省令で定める事務を定める命令第三条各号に規定する事務の処理に係るシステムに必要とされる機能等に関する標準化基準を定める省令（案）等に対する意見募集の結果",
+    "url": "https://www.soumu.go.jp/menu_news/s-news/01gyosei02_02000414.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "7491a98ed827e72abb6c736b6739d0b9",
+    "ministry": "総務省",
+    "source_name": "新着",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "「令和7年度危険物施設におけるスマート保安等に係る調査検討会報告書」の公表",
+    "url": "https://www.soumu.go.jp/menu_news/s-news/01shoubo01_02001186.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "2e7de6db7784743c7f317d78ad8769d9",
+    "ministry": "総務省",
+    "source_name": "新着",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "「令和7年度水素等のGX新技術に係る危険物規制に関する検討報告書」の公表",
+    "url": "https://www.soumu.go.jp/menu_news/s-news/01shoubo01_02001185.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "72d83eaac444e2f38082f6c4e0b23d2f",
+    "ministry": "総務省",
+    "source_name": "新着",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "「新技術を活用した屋外貯蔵タンクの効果的な予防保全に関する調査検討会報告書」の公表",
+    "url": "https://www.soumu.go.jp/menu_news/s-news/01shoubo01_02001184.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "3016a5e68e0aee38caee51a4bcecfd6b",
+    "ministry": "総務省",
+    "source_name": "新着",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
+    "title": "「火災危険性を有するおそれのある物質等に関する調査検討報告書」の公表",
+    "url": "https://www.soumu.go.jp/menu_news/s-news/01shoubo01_02001181.html",
+    "published_at": "2026-03-24T20:00:00.000Z",
+    "date_estimated": false,
+    "id": "7bedb5e475b9fb49f4908406e14bbff3",
+    "ministry": "総務省",
+    "source_name": "新着",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "松本洋平文部科学大臣記者会見録（令和8年3月24日）",
@@ -57,7 +517,7 @@
     "id": "187cf47ea8ddbc5ed28f76194bac4c9d",
     "ministry": "文部科学省",
     "source_name": "RSS一覧",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "大学等設置等に係る寄附行為（変更）認可後の財政状況及び施設等整備状況調査結果（令和7年度）について掲載しました。",
@@ -67,7 +527,7 @@
     "id": "9b71ed08eb41b18d031d3050e09c67b8",
     "ministry": "文部科学省",
     "source_name": "RSS一覧",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "中央教育審議会初等中等教育分科会教育課程部会幼児教育ワーキンググループ（第6回）の配付資料を掲載しました",
@@ -77,7 +537,7 @@
     "id": "d9f5cd0eb4bb643112caf54fc13dcdcd",
     "ministry": "文部科学省",
     "source_name": "RSS一覧",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "令和７年賃金構造基本統計調査　結果の概況",
@@ -87,7 +547,7 @@
     "id": "161e5a005688649cca8a307e489f8ffc",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第2回人工知能（ＡＩ）技術の利用と消費者問題に関する専門調査会【3月31日開催】",
@@ -97,7 +557,7 @@
     "id": "bcf10a8780dee2c54690b0a81cd71268",
     "ministry": "内閣府",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "令和7年度教科用図書検定調査審議会総会（第1回）　配付資料",
@@ -107,7 +567,7 @@
     "id": "1ac3437c6b49686c0e1f74653926120a",
     "ministry": "文部科学省",
     "source_name": "RSS一覧",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "（2026年3月） 令和8年度に行われる教科用図書検定結果の公開について",
@@ -117,17 +577,7 @@
     "id": "33f05d2b50ad891cd2c35491cacdf190",
     "ministry": "文部科学省",
     "source_name": "RSS一覧",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
-  },
-  {
-    "title": "国家試験合格発表",
-    "url": "https://www.mhlw.go.jp/kouseiroudoushou/shikaku_shiken/goukaku.html",
-    "published_at": "2026-03-24T05:00:00.000Z",
-    "date_estimated": false,
-    "id": "12d0fb3bf133feb2885e4391834b5571",
-    "ministry": "厚生労働省",
-    "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第58回労働政策審議会人材開発分科会（オンライン併用）の開催について",
@@ -137,7 +587,7 @@
     "id": "9c6bc315f37375199eaa8152da2f84fa",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "令和７年　特定募集情報等提供事業概況報告書の集計結果",
@@ -147,7 +597,7 @@
     "id": "9219ebc666e150c0ea9090bdf6e5de62",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第10回臓器移植に係る情報システム作業班（書面）を開催します",
@@ -157,7 +607,7 @@
     "id": "25d90328187971a6b6bdd9aa814b2c2d",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "原子力科学技術委員会（第40回）の開催について",
@@ -167,7 +617,7 @@
     "id": "1fcb0f17dd8a5986d1cef01cba86e9be",
     "ministry": "文部科学省",
     "source_name": "RSS一覧",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "中央教育審議会初等中等教育分科会教育課程部会産業教育ワーキンググループ（第5回）の議事録を掲載しました",
@@ -177,7 +627,7 @@
     "id": "cb5edf07f54fcb4f1c2624f2a88b78be",
     "ministry": "文部科学省",
     "source_name": "RSS一覧",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "ライフサイエンス委員会　基礎・横断研究戦略作業部会（第13期～）（第3回）配付資料",
@@ -187,7 +637,7 @@
     "id": "9a92c8dcffb2e9ef4e586a0ca5e2babd",
     "ministry": "文部科学省",
     "source_name": "RSS一覧",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "「学校給食衛生管理基準」の在り方に関する有識者会議（第1回）の開催について",
@@ -207,7 +657,7 @@
     "id": "e2b384de75579ab8aba2e13150cd5662",
     "ministry": "文部科学省",
     "source_name": "RSS一覧",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "令和9年度大学、短期大学及び高等専門学校卒業・修了予定者に係る就職について（申合せ）",
@@ -217,7 +667,7 @@
     "id": "d3d044339eeac6d7fe7abb57c7fb7e9a",
     "ministry": "文部科学省",
     "source_name": "RSS一覧",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "令和7年度「学術情報基盤実態調査」の結果報告について－大学における大学図書館及びコンピュータ・ネットワーク環境の現状について－",
@@ -227,7 +677,7 @@
     "id": "e4ab9901087e3073b99ed0679db1c581",
     "ministry": "文部科学省",
     "source_name": "RSS一覧",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "令和７年における「人権侵犯事件」の状況について（概要）～法務省の人権擁護機関の取組～",
@@ -237,7 +687,7 @@
     "id": "d20ea0ffabe4aebf8c9967c514fed3ae",
     "ministry": "法務省",
     "source_name": "お知らせ",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "中央教育審議会初等中等教育分科会教育課程部会芸術ワーキンググループ（第7回）の配付資料を掲載しました",
@@ -247,7 +697,7 @@
     "id": "d3c38b4a631c75da853f269ada3ecaec",
     "ministry": "文部科学省",
     "source_name": "RSS一覧",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "宇宙開発利用部会 調査・安全小委員会（第61回）の配付資料を掲載しました",
@@ -277,7 +727,7 @@
     "id": "ec021c8e685277a5c13a5c7e931f7e7c",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "中央教育審議会初等中等教育分科会教育課程部会芸術ワーキンググループ（第6回）の議事録を掲載しました",
@@ -297,7 +747,7 @@
     "id": "b39c28878fb48dbf061bd83ad04c704b",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "「戦後80年　記憶の継承作文コンクール」の受賞者を決定しました",
@@ -307,7 +757,7 @@
     "id": "e0b94bccf8c1bfda2a6a2acbe000a113",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "教育課程部会　特定分野に特異な才能のある児童生徒に係る特別の教育課程ワーキンググループ（第7回） 配布資料を掲載しました。",
@@ -337,7 +787,7 @@
     "id": "dffb4ca5c2fba7d3aa33f5e4dea17410",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "「サービス産業動態統計調査」2026年（令和8年）1月分（速報）",
@@ -367,7 +817,7 @@
     "id": "b3cba37607b91a4da7f6f4f586ae0fdd",
     "ministry": "国土交通省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "内航船舶輸送統計月報の概要（令和7年12月分）",
@@ -377,7 +827,7 @@
     "id": "0e87b97dc64fa6fb7533c299aefcde49",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "令和８年度「地域輸送資源活用推進事業（レンタカー、施設送迎車両等の地域の輸送資源の活用）」の公募開始について",
@@ -387,7 +837,7 @@
     "id": "dd1a9a23d8998cdcda0a9ff0e97483af",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "テレワーク実施率、安定基調で推移～令和７年度のテレワーク人口実態調査結果を公表します～",
@@ -397,7 +847,7 @@
     "id": "5b62094009313ffbf82c4522e58e2c79",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "山国川水系山国川等を「特定都市河川」に指定～まちの魅力を未来へつなぐ、みんなで守る 流域治水の本格的実践～",
@@ -407,7 +857,7 @@
     "id": "36f442f1ca63e52714937742e8c89187",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "水道管路の耐震適合性について議論します～令和７年度第１回管路の耐震化に関する検討会の開催～",
@@ -417,7 +867,7 @@
     "id": "2d77616ff16d522f57419935f5928eb1",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "河川事業の新規事業の予算化について審議します～社会資本整備審議会河川分科会事業評価小委員会(第21回)の開催～",
@@ -427,7 +877,7 @@
     "id": "9a9dce4367d7f8a08a17226df7f0fc44",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "社会資本整備審議会道路分科会第３０回事業評価部会の開催～道路事業の新規事業採択時評価等について有識者から意見を聴取します～",
@@ -437,7 +887,7 @@
     "id": "b055bd2c7e9c2105a64bbeb62ac64cf1",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "「第11回 自動物流道路に関する検討会」の開催について～「危機」を「転機」とする自動物流道路～",
@@ -447,7 +897,7 @@
     "id": "e876de26c04dad45c865ea1e1de42cb8",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "「子育てエコホーム支援事業（令和５年度補正事業）」の事務事業者が利用するサーバーの不正利用によるスパムメールについて",
@@ -457,7 +907,7 @@
     "id": "9425832346cf8ba2f622ae3d1f62ef5f",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "防犯リフォームで安全・安心なくらしを～住まいの防犯対策をまとめた｢住まいの防犯リフォームガイド｣を策定～",
@@ -467,7 +917,7 @@
     "id": "c1f1782f65e16acb3c113fc4ebcd6ada",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "ＪＲ四国の経営自立に向けた経営改善と支援の継続について",
@@ -477,7 +927,7 @@
     "id": "5a355cec0052e2c7cf094e930dc44176",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "自動車整備事業関連手続きについてもオンライン申請を開始します！～いつでもどこからでも申請可能に～",
@@ -487,7 +937,7 @@
     "id": "cc7f070621c35b97f08fec86ae5eac1b",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "物流拠点機能強化支援事業費補助金（非常用電源設備の導入補助事業及び災害時の支援物資輸送体制構築促進事業）に係る執行団体の決定について",
@@ -497,7 +947,7 @@
     "id": "387b4dc9fdf0bd474c1eaae849c23478",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "船舶へのモーダルシフト推進にご活用ください！～中・長距離フェリー、RORO船及び内航コンテナ船に係る積載率動向について～",
@@ -507,7 +957,7 @@
     "id": "b236ca9304ffb2e4965668f573bbbaa5",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "交通政策審議会航空分科会事業評価小委員会の開催について",
@@ -517,7 +967,7 @@
     "id": "e886bd381bff3cc1e91cf36e7ff2d412",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "「令和７年度 スマートシティ海外展開に関する有識者会議（第３回）」を開催します！～ASEANをはじめとした海外におけるスマートシティ実現に向けて～",
@@ -527,7 +977,7 @@
     "id": "c15faf2e1096e307c9565070f8bd085d",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第35回中央非常通信協議会表彰",
@@ -537,7 +987,7 @@
     "id": "6e6d49fc1a616b343a8cdf85212dda59",
     "ministry": "総務省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "林総務大臣閣議後記者会見の概要",
@@ -547,7 +997,7 @@
     "id": "20fd3aa6602f4eb0323d1b0d8cbd0e1b",
     "ministry": "総務省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第46回政策評価審議会（第45回政策評価制度部会と合同）（令和8年3月24日開催）",
@@ -557,7 +1007,7 @@
     "id": "59307401671b767ffa3c7d76c066e587",
     "ministry": "総務省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "固定資産評価基準の一部を改正する告示案に係る地方財政審議会第43回固定資産評価分科会会議資料及び意見募集",
@@ -567,7 +1017,7 @@
     "id": "e63ca798e27ccc3c9fe3ab260d29d124",
     "ministry": "総務省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "「災害情報伝達手段としてのドローンの活用に関する検討報告書」の公表",
@@ -577,7 +1027,7 @@
     "id": "65c6dddf5a2801cfb5ae9946eb9d78e0",
     "ministry": "総務省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "情報通信審議会　情報通信技術分科会　陸上無線通信委員会　5.2GHz帯及び6GHz帯無線LAN作業班（第17回）の開催案内",
@@ -587,7 +1037,7 @@
     "id": "a8caeb000cea570ae10231fd9e5ef0fd",
     "ministry": "総務省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "情報通信審議会　情報通信技術分科会（第194回）の開催について",
@@ -597,7 +1047,7 @@
     "id": "fe73d35865745084b6fba2011243722b",
     "ministry": "総務省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "令和8年度の電話リレーサービス提供機関及び電話リレーサービス支援機関の事業計画書等の認可",
@@ -607,7 +1057,7 @@
     "id": "c2cead7c3998ca38f3b02f1d8006581d",
     "ministry": "総務省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "情報通信審議会　情報通信技術分科会　電波有効利用委員会（第12回）開催案内",
@@ -677,7 +1127,7 @@
     "id": "1053b9d50451e96e2a865798fda7df60",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "令和７年度第10回医薬品等安全対策部会安全対策調査会 議事録",
@@ -687,7 +1137,7 @@
     "id": "771939a93ac2982d9da320a9ceb3179b",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "「QuizKnock」と法務省人権擁護局のコラボ第３弾が公開されました！",
@@ -697,7 +1147,7 @@
     "id": "69b359125950a236db714c48908d7643",
     "ministry": "法務省",
     "source_name": "お知らせ",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "上野厚生労働大臣　閣議後記者会見のお知らせ",
@@ -707,7 +1157,7 @@
     "id": "f6ebd4d50cae5441a16f7c3a441c8a8f",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "「医療機器の流通改善に関する懇談会」第11回会合の開催について",
@@ -717,7 +1167,7 @@
     "id": "8ee18c9238ddcbdcbc25ba7ac534d11c",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第８回安全衛生関係指定制度運営評価会議　議事録",
@@ -727,7 +1177,7 @@
     "id": "5c431adc6a81c0e9ca5cc2e29c21269c",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "教育課程部会　外国語ワーキンググループ（第10回）配付資料",
@@ -747,7 +1197,7 @@
     "id": "bbea66d46979060f8d23625b7ecc3654",
     "ministry": "内閣府",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "総合職試験 既合格者向け令和8年度早期官庁訪問の実施について【総合職技術系】",
@@ -767,7 +1217,7 @@
     "id": "33099672a3f2cb2904d6f36f469ff95d",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第３回がんゲノム医療中核拠点病院等の指定要件に関するワーキンググループ（開催案内）",
@@ -777,7 +1227,7 @@
     "id": "21a422919bb015e5a35108252dc55c83",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "「第18回薬局・薬剤師の機能強化等に関する検討会」の開催について",
@@ -787,7 +1237,7 @@
     "id": "0ee16b2b3e0566bd5047801b7353db20",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "中小企業における福利厚生の取組事例を収集・公表しました",
@@ -797,7 +1247,7 @@
     "id": "0391156b262458a2d18ebf586c6d0aa0",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第182回医学的検証作業グループ",
@@ -807,7 +1257,7 @@
     "id": "e1a83c2bc9ed1875bc5d5b942ce50541",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第146回脳死下での臓器提供事例に係る検証会議を開催します",
@@ -817,7 +1267,7 @@
     "id": "06b8c8ac29a3678d1eb7ee52393c5d84",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第69回社会保障審議会医療分科会",
@@ -827,7 +1277,7 @@
     "id": "012d67d3c915c434657324293f200397",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "科学技術・学術審議会 研究開発基盤部会（第33回）開催案内",
@@ -857,7 +1307,7 @@
     "id": "4ae6301b689911a9f6e587785cdca4be",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "「チクングニア熱のリスク評価等について」報道発表資料を掲載しました",
@@ -867,7 +1317,7 @@
     "id": "1e0ec79d69e32543772d65267dc5b1bd",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "新型コロナウイルス感染症に関する報道発表資料を更新しました",
@@ -877,7 +1327,7 @@
     "id": "6b089f1374d233bee96c9e4342bd4ba4",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "インフルエンザに関する報道発表資料を更新しました",
@@ -887,7 +1337,7 @@
     "id": "80580087738abd9413b158b59666c764",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "インフルエンザ・新型コロナウイルス感染症の定点当たり報告数の推移を更新しました",
@@ -897,7 +1347,7 @@
     "id": "6c7a439421065520613b6d49a02ee3f8",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "インフルエンザの発生状況を更新しました",
@@ -907,7 +1357,7 @@
     "id": "b295531683fca73f6542bbb68cd9d4eb",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "「薬剤耐性ワンヘルス動向調査年次報告書 2025」を公表します",
@@ -957,7 +1407,7 @@
     "id": "844f2901ab4202678b11ecd9f1fa0720",
     "ministry": "内閣府",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第４６回がん検診のあり方に関する検討会（資料）",
@@ -967,7 +1417,7 @@
     "id": "97ffce39191dee9c732325f62066717c",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "既合格者向け官庁訪問の掲載（総合職（数理・デジタル系））",
@@ -977,7 +1427,7 @@
     "id": "4eb999d583c867ebcfc9409de94c577b",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "採用情報（任期付職員（コミュニケーションデザイン専門官又は主査）募集情報）",
@@ -987,7 +1437,7 @@
     "id": "2d0571e6ee132e6a53922679d9bcfee9",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "採用情報（任期付職員（事業専門官又は主査）募集情報）",
@@ -997,7 +1447,7 @@
     "id": "922f2f745cd6e6a7db439edf425fc652",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "平口洋法務大臣がベトナム社会主義共和国司法副大臣による表敬訪問を受けました。",
@@ -1007,7 +1457,7 @@
     "id": "4e2f9a4447549298eb2573310ab376d6",
     "ministry": "法務省",
     "source_name": "お知らせ",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "事務補佐員の募集（国際課・令和８年６月１日採用）",
@@ -1017,7 +1467,7 @@
     "id": "aff98056e0f42290060d2dde30c468d6",
     "ministry": "法務省",
     "source_name": "お知らせ",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "中央教育審議会初等中等教育分科会教育課程部会社会・地理歴史・公民ワーキンググループの配付資料を掲載しました",
@@ -1037,7 +1487,7 @@
     "id": "fce35d2fbfc7e11e17179e5e463be6c7",
     "ministry": "法務省",
     "source_name": "お知らせ",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "【一般職技術系】業務説明会日程一覧",
@@ -1067,7 +1517,7 @@
     "id": "93e8a42c3e9232b8a2fe470e308a871e",
     "ministry": "法務省",
     "source_name": "お知らせ",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "電話リレーサービスの在り方に関する検討会（第4回）配布資料",
@@ -1097,7 +1547,7 @@
     "id": "b0df53da52740e9ae8f94da8bfdb42ae",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "国土交通月例経済（令和８年３月号）",
@@ -1107,7 +1557,7 @@
     "id": "996a97e19b78da9c1fc57e2439fadffc",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "改正建設業法に基づく労務費の基準について議論～中央建設業審議会　労務費の基準に関するワーキンググループ（第１２回）の開催～",
@@ -1117,7 +1567,7 @@
     "id": "ad5ce8c086e0503036bfe612a5478d29",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "改修による不動産のインパクトを評価するスキームの提案を募集！～本日から令和８年７月17日までの期間で募集します～",
@@ -1127,7 +1577,7 @@
     "id": "c50d8fb69e8439ac265cb2daa3fad1f8",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "市街地の自動二輪車等の駐車スペース確保について議論します～第３回「市街地における自動二輪車等の駐車スペース確保に係る関係省庁連絡会議」の開催～",
@@ -1137,7 +1587,7 @@
     "id": "53d09659dacacb95a4cfa3b654bedf4f",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "「低炭素アスファルト技術」に関する公募について～道路分野の脱炭素化を目指して～",
@@ -1147,7 +1597,7 @@
     "id": "313b37286b358f0b2e102c25770a92e7",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "「路面下空洞に強い道路構造技術」、「路面下のより深い位置の空洞や陥没発生リスク箇所を探査・検知できる技術」に関する公募について～新技術による道路陥没の被害軽減を目指して～",
@@ -1157,7 +1607,7 @@
     "id": "7c0214ef3d7dd2ff34325a3c824ec0d6",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第２２回「超電導磁気浮上式鉄道実用技術評価委員会」の開催結果について",
@@ -1167,7 +1617,7 @@
     "id": "1e2a1f13d6419f69a163a0333ce6a123",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "IMO理事会　ペルシャ湾における船舶の安全な避難のための枠組み構築を呼びかけ",
@@ -1177,7 +1627,7 @@
     "id": "53e525d7af2016e55d6759987f441483",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "クルーズ等訪日旅客の受入促進事業（令和８年度第１回）を開始します",
@@ -1187,7 +1637,7 @@
     "id": "e69fae3a3dd7887882331d2d3f722d3e",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第12回「空の移動革命に向けた官民協議会」を開催します",
@@ -1197,7 +1647,7 @@
     "id": "4f660256223408132eeff35392d0af34",
     "ministry": "国土交通省",
     "source_name": "プレスリリース",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "情報通信審議会 電気通信事業政策部会 接続政策委員会（第79回）配布資料",
@@ -1267,7 +1717,7 @@
     "id": "54b7ba54c0df20b8a88b70fd39902cc3",
     "ministry": "法務省",
     "source_name": "お知らせ",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "松本洋平文部科学大臣記者会見録（令和8年3月19日）",
@@ -1287,7 +1737,7 @@
     "id": "49f6953f610e25c0c12c6a4b8f1e6652",
     "ministry": "法務省",
     "source_name": "お知らせ",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "宇宙開発利用部会 調査・安全小委員会（第61回）の開催について　～H3ロケット8号機の打上げに関する第5回会合～",
@@ -1307,7 +1757,7 @@
     "id": "ced53cc6f3c2bfae2ad5e58bc93cbedd",
     "ministry": "内閣府",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第14回支払手段の多様化と消費者問題に関する専門調査会【3月26日開催】",
@@ -1317,7 +1767,7 @@
     "id": "470db60b7ece2a8c72bdf00845a0d249",
     "ministry": "内閣府",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "特定胚等研究専門委員会（第130回）　配付資料",
@@ -1357,7 +1807,7 @@
     "id": "2d8528e70ca23c37fd87c4efaa8b105a",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "令和７年度地域介護・福祉空間整備等施設整備交付金（二次協議分）の内示（変更）について",
@@ -1367,7 +1817,7 @@
     "id": "70489abe0880c533160a4c1328316e13",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第26回がん診療連携拠点病院等の指定に関する検討会（指定結果）",
@@ -1377,7 +1827,7 @@
     "id": "3c95e3200b8190a7dc1277bbf18e35e2",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第29回社会保障審議会統計分科会疾病、傷害及び死因分類専門委員会　議事録",
@@ -1387,7 +1837,7 @@
     "id": "5793277c603912bde746f3ddb4160f89",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第７回 生命科学・医学系研究等における個人情報の取扱い等に関する合同会議　資料",
@@ -1397,7 +1847,7 @@
     "id": "454f1017b98c2b4cdeebd256375556d5",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "令和７年度保健師活動領域調査（活動調査）の結果について",
@@ -1407,7 +1857,7 @@
     "id": "b196a47030e53eb79f5221cb3d819d33",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "「第90回労働政策審議会雇用環境・均等分科会」（ペーパーレス会議）を開催します（開催案内）",
@@ -1417,7 +1867,7 @@
     "id": "8ef77490a6a27f1263122ea5a8f8467d",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "社会保障審議会（医療保険部会 あん摩マッサージ指圧、はり・きゅう療養費検討専門委員会）の開催について【ハイブリッドにて開催】",
@@ -1427,7 +1877,7 @@
     "id": "d69132e0a92abad7c178d8819c894393",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "社会保障審議会（医療保険部会 柔道整復療養費検討専門委員会）の開催について【ハイブリッドにて開催】",
@@ -1437,7 +1887,7 @@
     "id": "85416302d04ca500eee215c6581d7f9b",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "「第35回 労働政策審議会勤労者生活分科会」を開催します（開催案内）",
@@ -1447,7 +1897,7 @@
     "id": "82170bceb3ce7c62758faaf3d2a9be4e",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "労働安全衛生規則の一部を改正する省令の施行等について（令和７年５月20日付け基発0520第６号）",
@@ -1457,7 +1907,7 @@
     "id": "84cdb1995f64d8107bba36a0b86683c9",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "労働政策審議会(勤労者生活分科会)",
@@ -1597,7 +2047,7 @@
     "id": "5f4c2fb8e818b602b68c579aa880aba9",
     "ministry": "内閣府",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "農薬第二専門調査会（第48回）の開催について（非公開）【3月30日開催】",
@@ -1607,7 +2057,7 @@
     "id": "f4c28f9f927fcc7c13335b089b8ae348",
     "ministry": "内閣府",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "教育課程部会　特別活動ワーキンググループ（第5回）の開催について",
@@ -1627,7 +2077,7 @@
     "id": "80a4f6d72cf028a7b11fb78594d7e1b1",
     "ministry": "法務省",
     "source_name": "お知らせ",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "規制改革推進会議健康・医療・介護ワーキング・グループ（第11回）",
@@ -1637,7 +2087,7 @@
     "id": "a98a7e9bc2a3b897ce792dac72b017eb",
     "ministry": "内閣府",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "機械受注統計調査報告（令和8年1月実績）",
@@ -1707,7 +2157,7 @@
     "id": "d9d9d319ce5a6cbdf2f797fb94cc7742",
     "ministry": "国土交通省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "航空輸送統計速報（令和7年（2025年）分）",
@@ -2017,7 +2467,7 @@
     "id": "ef3fb80515df3f8108a922aa1544eaeb",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "U H Cナレッジハブの東京での対面研修について",
@@ -2027,7 +2477,7 @@
     "id": "baa9f70e17c461e8f849bec741ba8fa5",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "上野厚生労働大臣　閣議後記者会見のお知らせ",
@@ -2037,7 +2487,7 @@
     "id": "08040c4a333085a95ed51d27af9aec80",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "中央教育審議会大学分科会（第189回）配付資料",
@@ -2067,7 +2517,7 @@
     "id": "e3de2228ef479916b56ca34d7efc62d1",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "「第９回厚生科学審議会食品衛生監視部会」の開催について",
@@ -2077,7 +2527,7 @@
     "id": "9702958c80a1fb9339ef948f4cb61e50",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "危険ドラッグの成分１物質を新たに指定薬物に指定",
@@ -2087,7 +2537,7 @@
     "id": "4e484038cb951d07dbaa8c24fac9a62f",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "人事労務マガジン 特集第243号　「働きがいのある職場づくりのための支援マニュアル」を作成しました",
@@ -2097,7 +2547,7 @@
     "id": "5e0351b083ebfb76cfede0dc2e4bb68f",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "法人の役員である個人事業主等に係る被保険者資格の取扱いについて",
@@ -2107,7 +2557,7 @@
     "id": "f652d14cf2c1905ae2861107e81b756e",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第31回身元特定ＤＮＡ鑑定会議の開催",
@@ -2117,7 +2567,7 @@
     "id": "6db08c0ff9471e526a5485b8be33803d",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "原子力科学技術委員会　原子力研究開発・基盤・人材作業部会（第28回）配付資料",
@@ -2167,7 +2617,7 @@
     "id": "0b89c693c53f4d0288b36a7e328e410c",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第223回労働政策審議会職業安定分科会を開催します",
@@ -2177,7 +2627,7 @@
     "id": "7caf9400d11f668df19bd7883081d792",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "科学技術・学術審議会 大学研究力強化部会（第6回）　配付資料",
@@ -2197,7 +2647,7 @@
     "id": "ec7919f3df37ffa9b69175dd269a4409",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "規制改革推進会議スタートアップ・イノベーション促進ワーキング・グループ（第12回）",
@@ -2547,7 +2997,7 @@
     "id": "1843104813b728432399ab9a3e344239",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "食事由来の化学物質のばく露評価ワーキンググループ(第10回)の開催について【3月23日開催】",
@@ -2577,7 +3027,7 @@
     "id": "ebeb5662aabf758854356faf7a3d162a",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第211回社会保障審議会医療保険部会（ペーパーレス）の開催について",
@@ -2587,7 +3037,7 @@
     "id": "854d9e8cf9a2cb788547d3fc641fee56",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "令和７年度第14回「石綿に係る疾病の業務上外に関する検討会」を開催します",
@@ -2597,7 +3047,7 @@
     "id": "64e04d718bbb315d8aa16a16a3969b8b",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "令和６(2024)年度地域保健・健康増進事業報告の概況",
@@ -2607,7 +3057,7 @@
     "id": "6fc6ce47b26298db47218c53cf2d4ca9",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "人材委員会（第114回）の開催について",
@@ -2757,7 +3207,7 @@
     "id": "3d4df9da3e4421dd95de0a4568e5541d",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "金子大臣会見要旨",
@@ -2767,7 +3217,7 @@
     "id": "0c766cba09a5ed3a8084d1b49925eede",
     "ministry": "国土交通省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "地域生物多様性増進法に基づく「自然共生サイト」の認定について～令和７年度第３回認定を行いました～",
@@ -3057,7 +3507,7 @@
     "id": "a0558f1bd0c18ba4bd1f4a1a6b669fc6",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第39回厚生科学審議会予防接種・ワクチン分科会研究開発及び生産・流通部会（Web会議）の開催について",
@@ -3067,7 +3517,7 @@
     "id": "da445233f5559b359ded7684d0ab47c9",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "【お知らせ】携帯版ホームページの廃止について",
@@ -3090,6 +3540,16 @@
     "fetched_at": "2026-03-19T01:49:09.305Z"
   },
   {
+    "title": "薬剤師国家試験制度について新たな基本方針を取りまとめました",
+    "url": "https://www.mhlw.go.jp/stf/newpage_71688.html",
+    "published_at": "2026-03-16T09:37:00.000Z",
+    "date_estimated": false,
+    "id": "5284f437dfab29a0e32ea1fa90cae283",
+    "ministry": "厚生労働省",
+    "source_name": "新着",
+    "fetched_at": "2026-03-26T01:53:34.756Z"
+  },
+  {
     "title": "第４回法遵守の文化のためのグローバルユースフォーラムを開催しました。",
     "url": "https://www.moj.go.jp/hisho/kouhou/hisho06_01405.html",
     "published_at": "2026-03-16T08:24:00.000Z",
@@ -3107,7 +3567,7 @@
     "id": "9223063fef08db83136c4372c48e0143",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "厚生労働統計の整備に関する検討会",
@@ -3117,7 +3577,7 @@
     "id": "7325ce65e2b3150b2eca14588ab7fb5f",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第32回厚生労働統計の整備に関する検討会資料",
@@ -3127,7 +3587,7 @@
     "id": "b10913c318f3c98b53fc04ca777f4dd3",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "土地家屋調査士法第３条第２項第２号の法務大臣の認定（令和８年３月１６日付け）について掲載しました。",
@@ -3157,7 +3617,7 @@
     "id": "274855a091b672eccc9a47f6c1b1f7cd",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第45回厚生科学審議会　臨床研究部会　開催案内",
@@ -3167,7 +3627,7 @@
     "id": "47201e81874ab57e32fb736c9af9513c",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "Japan Biotech Showcase & Symposium 2026 を開催します",
@@ -3177,7 +3637,7 @@
     "id": "e2016d0f4704aaf9b5161610d648ad9f",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "「第９回電子処方箋等検討ワーキンググループ」を開催します（開催案内）",
@@ -3187,7 +3647,7 @@
     "id": "53fe5c57d814456cf8abbe6c8c52ec86",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第10回「ものづくり日本大賞」（内閣総理大臣賞）受賞者を決定しました",
@@ -3197,17 +3657,7 @@
     "id": "e93f2ec27e3540560e4d39333214f644",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
-  },
-  {
-    "title": "資格・試験情報",
-    "url": "https://www.mhlw.go.jp/kouseiroudoushou/shikaku_shiken/index.html",
-    "published_at": "2026-03-16T05:00:00.000Z",
-    "date_estimated": false,
-    "id": "1336a7e416a971a62b063336f0230ef7",
-    "ministry": "厚生労働省",
-    "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "特定胚等研究専門委員会（第130回）を開催します",
@@ -3277,7 +3727,7 @@
     "id": "06bb7e6abfa5f19080aa5f87641a959d",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第22回年金広報検討会",
@@ -3287,7 +3737,7 @@
     "id": "336ae2e4276e660960d94759a57f909d",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "薬事工業生産動態統計令和７年12月分月報について",
@@ -3297,7 +3747,7 @@
     "id": "12b54d7f889985cc86f866072f2602e3",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "令和8年（第20回）「みどりの学術賞」受賞者が決定しました",
@@ -3337,7 +3787,7 @@
     "id": "b109b7c991611803fd97af7de9544c1c",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "本府省合同業務説明会のご案内",
@@ -3347,7 +3797,7 @@
     "id": "88f00bf13595328b2bc71ac30b496743",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "２０２６年度国家公務員総合職（技術系）既合格者向け官庁訪問の情報を更新しました",
@@ -3367,7 +3817,7 @@
     "id": "3d36fe160c266cc12b73fd8c90537495",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "情報通信審議会　電気通信事業政策部会（第89回）配布資料・議事概要・議事録",
@@ -3667,7 +4117,7 @@
     "id": "acb9484c7e35e6c8998b056e622fe1ee",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "教育課程部会　算数・数学ワーキンググループ（第8回）　配付資料　※理科ワーキンググループ（第7回）と合同開催",
@@ -3697,7 +4147,7 @@
     "id": "54bcc5ff2d7fc39af4702dfa77532b0a",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第221回国会（令和８年特別会）提出法律案",
@@ -3707,7 +4157,7 @@
     "id": "00e2329ca4dff89db76059efb17e9b87",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "令和8年度学校基本調査について",
@@ -3727,7 +4177,7 @@
     "id": "e38390868854f0058e22e6da8199cd2c",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "昭和館で特別企画展を３月20日から開催します",
@@ -3737,7 +4187,7 @@
     "id": "5ededb279c6744806cb2ddf5a02502de",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "再生医療等の安全性の確保等に関する法律に基づく緊急命令について",
@@ -3747,7 +4197,7 @@
     "id": "6747facd76a51ea64da6d340939d570b",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "タレント・作家の高山一実さんが出演「“一”から“実”になる医薬品産業」を公開",
@@ -3757,7 +4207,7 @@
     "id": "7b696038169ee08cf23cc8b9d4cab548",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "「戦後80年　記憶の継承作文コンクール」の表彰式を開催します",
@@ -3767,7 +4217,7 @@
     "id": "9b7cb129b3a1a84df43a2b7a7be77c9b",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第77回全国労働衛生週間のスローガンの募集について",
@@ -3777,7 +4227,7 @@
     "id": "387c1a9565171bf47638626051e1e0ca",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "「はたらく」に関する情報が見やすく便利になります",
@@ -3787,7 +4237,7 @@
     "id": "1befcbcc820b3b1b90dc1b48430f8067",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "令和8年度からの共同利用・共同研究拠点の認定について（公立大学・私立大学）",
@@ -3847,7 +4297,7 @@
     "id": "223d3315cbca8a36bc62af7f1536a5b2",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第７回 がんゲノム医療中核拠点病院等の指定要件に関するワーキンググループ（資料）",
@@ -3857,7 +4307,7 @@
     "id": "8298c655f60bbab7e6086ae0c39f7cc9",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第21回（令和７年度）紛争解決手続代理業務試験の合格者について",
@@ -3867,7 +4317,7 @@
     "id": "7fe933b89d6e286409c2d383dde89eda",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "令和８年度エイジフレンドリー補助金（間接補助金）に係る補助事業者（執行団体）の公募について（公募要領）",
@@ -3887,7 +4337,7 @@
     "id": "90764cc2fcfe8446578ae21bdd79afe8",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第52回技術士分科会の議事録を追加掲載しました",
@@ -3917,7 +4367,7 @@
     "id": "a5a66a696234360f1ddaee2822644bc5",
     "ministry": "国土交通省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "電話リレーサービスの在り方に関する検討会（第4回）の開催について",
@@ -4247,7 +4697,7 @@
     "id": "fa833f70d78f96e0abc70e39672bbf63",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第７回 生命科学・医学系研究等における個人情報の取扱い等に関する合同会議",
@@ -4257,7 +4707,7 @@
     "id": "5abf679260d1085f772b55df8f6fd9f5",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "患者申出療養評価会議の開催について",
@@ -4267,7 +4717,7 @@
     "id": "ca7de20e92fae96d97f0568cb9767fde",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第109回社会保障審議会年金数理部会　議事録",
@@ -4277,7 +4727,7 @@
     "id": "283c3b4a0cda15bb74c5aade84bcd896",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第108回社会保障審議会年金数理部会　議事録",
@@ -4287,7 +4737,7 @@
     "id": "a44d61a0ccb6f2e43c14edfd0b7fc1d8",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "食品安全委員会（第1018回）の開催について【3月17日開催】",
@@ -4327,7 +4777,7 @@
     "id": "88b62dc3af339d6a9302a6efc3105fc0",
     "ministry": "厚生労働省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "法人企業景気予測調査（令和８年１-３月期）",
@@ -4657,7 +5107,7 @@
     "id": "0cf55158188c34c23e1ea0fdadab1355",
     "ministry": "国土交通省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第73回ハンセン病元患者家族補償金認定審査会",
@@ -4977,7 +5427,7 @@
     "id": "789996bba9f8c3122257f05dcfd10cb1",
     "ministry": "国土交通省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "令和８年度看護教員等養成支援事業（通信制教育）の公募について",
@@ -5407,7 +5857,7 @@
     "id": "073eb1173dcd85b06911e7816fa4151f",
     "ministry": "国土交通省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "第13回医師養成過程を通じた医師の偏在対策等に関する検討会",
@@ -5567,7 +6017,7 @@
     "id": "3629545d4b702d00de6b00366dfc7147",
     "ministry": "国土交通省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "金子大臣会見要旨",
@@ -5577,7 +6027,7 @@
     "id": "54924a122a040aadd4a69f0e6cab7aab",
     "ministry": "国土交通省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "金子大臣会見要旨",
@@ -5587,7 +6037,7 @@
     "id": "8ec9563d0edbb7779b7359e9e814e6af",
     "ministry": "国土交通省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "医療分野における業務効率化・職場環境改善支援事業について",
@@ -6127,7 +6577,7 @@
     "id": "fe826b3c38a108a7a599a80a6a964afa",
     "ministry": "国土交通省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "宮﨑防衛副大臣のポーランド訪問について（概要）",
@@ -6717,7 +7167,7 @@
     "id": "7ad2b1c9ec36b78646aee36fe96ff44c",
     "ministry": "国土交通省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "吉田防衛大臣政務官の出張予定について",
@@ -7157,7 +7607,7 @@
     "id": "6cef97fa8cfb42afb211b42385eb1aa7",
     "ministry": "国土交通省",
     "source_name": "新着",
-    "fetched_at": "2026-03-25T01:47:32.819Z"
+    "fetched_at": "2026-03-26T01:53:34.756Z"
   },
   {
     "title": "上野厚生労働大臣　閣議後記者会見のお知らせ",
@@ -7748,25 +8198,5 @@
     "ministry": "防衛省",
     "source_name": "新着",
     "fetched_at": "2026-02-16T01:00:48.987811+00:00"
-  },
-  {
-    "title": "防衛人事審議会公正審査分科会の持ち回り開催について",
-    "url": "/j/press/news/2025/12/25a.html",
-    "published_at": "2025-12-25T18:12:09+09:00",
-    "date_estimated": false,
-    "id": "95573aa26c49e27570f4e051ba281b5e",
-    "ministry": "防衛省",
-    "source_name": "新着",
-    "fetched_at": "2026-02-16T01:00:48.987819+00:00"
-  },
-  {
-    "title": "衛星コンステレーションの整備・運営等事業民間事業者の選定について",
-    "url": "/j/press/news/2025/12/24a.html",
-    "published_at": "2025-12-25T18:12:09+09:00",
-    "date_estimated": false,
-    "id": "dba82a9230e039a009a93d605343adab",
-    "ministry": "防衛省",
-    "source_name": "新着",
-    "fetched_at": "2026-02-16T01:00:48.987826+00:00"
   }
 ]
